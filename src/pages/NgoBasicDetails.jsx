@@ -51,6 +51,7 @@ export default function NgoBasicInfo() {
       navigate("/ngo-auth");
 
     } catch (err) {
+      console.log("here",err);
       alert(err.response?.data || "Signup failed");
     } finally {
       setLoading(false);

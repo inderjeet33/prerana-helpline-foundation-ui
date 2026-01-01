@@ -102,7 +102,7 @@ export default function App() {
         <Route path="/campaigns/create" element = {<CampaignCreate/>}/>
         <Route path="/campaign/create" element={<NGOLayout><CreateCampaign /></NGOLayout>} />
         <Route path="/campaign/my-campaigns" element={<NGOLayout><MyCampaigns/> </NGOLayout>}/>
-        <Route path="/campaign/:id" element={<CampaignDetails/>} />
+        <Route path="/campaign/:id" element={<IndividualProtected><CampaignDetails/></IndividualProtected>} />
         <Route path="/moderator-login" element={<ModeratorLogin />} />
         <Route path="/ngo-login" element={<NgoLogin />} />
         <Route path="/ngo/profile" element={<NgoProtected><NGOLayout><NgoProfileComplete/></NGOLayout></NgoProtected>} />

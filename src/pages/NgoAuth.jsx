@@ -159,7 +159,8 @@ export default function NgoSendOtp() {
       await axios.post("http://localhost:8080/auth/send-otp", { mobileNumber : mobile, userType: "NGO" });
       navigate("/ngo/verify-otp", { state: { mobile } });
     } catch (err) {
-      alert(err.response?.data || "Error sending OTP");
+      console.log(err.response);
+      alert(err.response?.data.message || "Error sending OTP");
     } finally {
       setLoading(false);
     }

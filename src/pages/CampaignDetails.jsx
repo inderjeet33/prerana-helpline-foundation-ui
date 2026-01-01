@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./campaign.css";
 import { AuthContext } from "../context/AuthContext";
+import Navbar from "../components/Navbar";
+import Sidebar from "../components/Sidebar";
 
 export default function CampaignDetails() {
   const { id } = useParams();
@@ -28,6 +30,9 @@ export default function CampaignDetails() {
   const isOwner = campaign.ownerId === user?.id;
 
   return (
+    <>
+    <Navbar/>
+    <Sidebar/>
     <div className="campaign-detail-wrapper">
 
       {/* 🔥 TOP SPLIT SECTION */}
@@ -143,5 +148,6 @@ export default function CampaignDetails() {
 
       </div>
     </div>
+    </>
   );
 }

@@ -88,7 +88,11 @@
               state: res.data.state || "",
               pincode: res.data.pincode || "",
               description: res.data.description || "",
-              categories: res.data.categories,
+               categories: Array.isArray(res.data.categories)
+              ? res.data.categories
+              : typeof res.data.categories === "string"
+              ? res.data.categories.split(",").map(c => c.trim()).filter(Boolean)
+              : [],
                 email: res.data.email,
                 phone:res.data.phone,
                 district:res.data.district,
@@ -111,31 +115,6 @@
       return <div className="ngo-loading">Loading...</div>;
     }
 
-    /* ----------------------------
-      VALIDATION
-    ---------------------------- */
-  //   const validateStep = (s) => {
-  //     const e = {};
-  //     if (s === 1 && !form.ngoName.trim()) e.ngoName = "NGO name required";
-  //     if (s === 2) {
-  //       if (!form.address.trim()) e.address = "Address required";
-  //       if (!form.city.trim()) e.city = "City required";
-  //       if (!form.district.trim()) e.district = "District required";
-
-  //       if (!form.state.trim()) e.state = "State required";
-  //       if (!form.pincode.trim()) e.pincode = "Pincode required";
-  //     }
-  //     if (s === 3) {
-  //       if (!form.bankAccount.trim()) e.bankAccount = "Bank account required";
-  //       if (!form.ifsc.trim()) e.ifsc = "IFSC required";
-  //     }
-  //     if (s === 4 && form.categories.length === 0) {
-  //   e.categories = "Select at least one category";
-  // }
-
-  //     setErrors(e);
-  //     return Object.keys(e).length === 0;
-  //   };
   const validateStep = (s) => {
   const e = {};
 
@@ -255,22 +234,7 @@
           </div>
 
           <form onSubmit={handleSubmit} className="ngo-form">
-            {/* {step === 1 && (
-              <div className="step-grid">
-                <label>
-                  NGO Name *
-                  <input name="ngoName" value={form.ngoName} onChange={handleChange} />
-                  {errors.ngoName && <div className="field-error">{errors.ngoName}</div>}
-                </label>
-
-                <label>
-                  Registration Number
-                  <input name="registrationNumber" value={form.registrationNumber} onChange={handleChange} />
-                </label>
-
-              
-              </div>
-            )} */}
+           
             {step === 1 && (
   <div className="step-grid">
     <label>
@@ -339,19 +303,7 @@
               </div>
             )}
 
-            {/* {step === 3 && (
-              <div className="step-grid">
-                <label className="full">
-                  Bank Account *
-                  <input name="bankAccount" value={form.bankAccount} onChange={handleChange} />
-                </label>
-
-                <label>
-                  IFSC *
-                  <input name="ifsc" value={form.ifsc} onChange={handleChange} />
-                </label>
-              </div>
-            )} */}
+        
             {step === 3 && (
   <div className="step-grid">
     <label className="full">
@@ -398,53 +350,7 @@
                   <textarea name="description" value={form.description} onChange={handleChange} />
                 </label>
 
-                {/* <label className="full">
-                  Categories (comma separated)
-                  <input name="categories" value={form.categories} onChange={handleChange} />
-                </label> */}
-              {/* <label className="full">
-    Categories *
-
-    <div className="multi-select">
-      <div
-        className="multi-select-input"
-        onClick={() => setCatOpen(!catOpen)}
-      >
-        {form.categories.length > 0
-          ? form.categories.map(c => c.replace("_", " ")).join(", ")
-          : "Select categories"}
-        <span className="arrow">▾</span>
-      </div>
-
-      {catOpen && (
-        <div className="multi-select-dropdown">
-          {CATEGORY_OPTIONS.map((cat) => (
-            <label key={cat} className="multi-select-item">
-              <input
-                type="checkbox"
-                checked={form.categories.includes(cat)}
-                onChange={(e) => {
-                  const checked = e.target.checked;
-                  setForm((prev) => ({
-                    ...prev,
-                    categories: checked
-                      ? [...prev.categories, cat]
-                      : prev.categories.filter((c) => c !== cat),
-                  }));
-                }}
-              />
-              {cat.replace("_", " ")}
-            </label>
-          ))}
-        </div>
-      )}
-    </div>
-
-    {errors.categories && (
-      <div className="field-error">{errors.categories}</div>
-    )}
-  </label> */}
-
+              
   <label className="full">
     Categories *
 

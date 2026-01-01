@@ -56,7 +56,7 @@ localStorage.setItem("ngoMobile", mobile);
 
         <div
           className="back-link"
-          onClick={() => navigate("/ngo/send-otp")}
+          onClick={() => navigate("/ngo-auth")}
         >
           Go Back
         </div>
