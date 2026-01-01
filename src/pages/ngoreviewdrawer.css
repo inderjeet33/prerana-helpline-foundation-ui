@@ -1,0 +1,54 @@
+.ngo-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1000;
+}
+
+.ngo-drawer {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 420px;
+  height: 100%;
+  background: #fff;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.ngo-drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.ngo-drawer section {
+  margin-bottom: 20px;
+}
+
+.ngo-drawer h4 {
+  margin-bottom: 8px;
+  color: #334155;
+}
+
+.ngo-drawer-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.verify-btn {
+  background: #16a34a;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.reject-btn {
+  background: #dc2626;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+}

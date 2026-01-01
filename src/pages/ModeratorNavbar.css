@@ -1,0 +1,62 @@
+.mod-nav {
+  width: 100%;
+  height: 70px;
+  padding: 0 30px;
+  background: #121212;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.mod-logo {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.mod-nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+.mod-link {
+  color: #d3d3d3;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.mod-link:hover {
+  color: #fff;
+}
+
+.mod-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.mod-user {
+  font-size: 15px;
+  color: #e0e0e0;
+}
+
+.mod-logout-btn {
+  background: #e63946;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.mod-logout-btn:hover {
+  background: #c1121f;
+}

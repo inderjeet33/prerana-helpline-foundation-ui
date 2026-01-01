@@ -1,0 +1,255 @@
+/* ===============================
+   DONATE PAGE — PREMIUM UI
+   =============================== */
+
+.donate-page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f6f8ff, #eef2ff);
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont;
+}
+
+/* content wrapper (shared with other pages) */
+.with-sidebar {
+  margin-left: 240px;
+  padding: 40px;
+}
+
+/* main card */
+.donate-outer {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  border-radius: 22px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 30px 80px rgba(20, 30, 80, 0.18);
+  animation: fadeUp 0.6s ease both;
+}
+
+/* ===============================
+   LEFT — VISUAL STORY
+   =============================== */
+
+.donate-left {
+  position: relative;
+  min-height: 560px;
+  background: #000;
+}
+
+.donate-slide {
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  padding: 40px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.donate-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0,0,0,0.25),
+    rgba(0,0,0,0.75)
+  );
+}
+
+.donate-hero-text {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+}
+
+.donate-hero-text h1 {
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: -0.6px;
+  margin-bottom: 12px;
+}
+
+.donate-hero-text p {
+  font-size: 15px;
+  opacity: 0.92;
+  max-width: 340px;
+}
+
+/* highlights */
+.donate-highlights {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  gap: 14px;
+  padding: 20px;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(6px);
+}
+
+.hl {
+  flex: 1;
+  background: rgba(255,255,255,0.16);
+  padding: 14px;
+  border-radius: 12px;
+  color: #fff;
+}
+
+.hl strong {
+  display: block;
+  font-size: 13px;
+}
+
+.hl span {
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+/* ===============================
+   RIGHT — FORM
+   =============================== */
+
+.donate-right {
+  padding: 48px;
+  background: linear-gradient(180deg, #ffffff, #f9fbff);
+}
+
+.donate-card {
+  max-width: 520px;
+  margin: auto;
+}
+
+.donate-title {
+  font-size: 28px;
+  font-weight: 800;
+  color: #1e2550;
+  margin-bottom: 18px;
+}
+
+/* messages */
+.donate-msg {
+  padding: 14px;
+  border-radius: 12px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.donate-msg.ok {
+  background: #e9fbf3;
+  color: #0d6b41;
+}
+
+.donate-msg.err {
+  background: #ffecec;
+  color: #a12b2b;
+}
+
+/* form */
+.donate-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.row {
+  display: flex;
+  gap: 16px;
+}
+
+.row label {
+  flex: 1;
+}
+
+/* inputs */
+.donate-form input,
+.donate-form select,
+.donate-form textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid #e1e6f5;
+  background: #fcfdff;
+  font-size: 14px;
+  transition: all 0.25s ease;
+}
+
+.donate-form textarea {
+  min-height: 100px;
+}
+
+.donate-form input:focus,
+.donate-form textarea:focus,
+.donate-form select:focus {
+  outline: none;
+  border-color: #4f6cff;
+  box-shadow: 0 14px 40px rgba(79,108,255,0.22);
+}
+
+/* checkbox */
+.chklabel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+}
+
+/* submit */
+.submit-btn {
+  margin-top: 14px;
+  padding: 16px;
+  border-radius: 16px;
+  background: linear-gradient(90deg, #4f6cff, #3b5bff);
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 20px 45px rgba(79,108,255,0.45);
+  transition: transform 0.2s ease;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+}
+
+/* ===============================
+   ANIMATION
+   =============================== */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===============================
+   RESPONSIVE
+   =============================== */
+@media (max-width: 1024px) {
+  .with-sidebar {
+    margin-left: 0;
+    padding: 24px;
+  }
+
+  .donate-outer {
+    grid-template-columns: 1fr;
+  }
+
+  .donate-left {
+    min-height: 320px;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+}
+  

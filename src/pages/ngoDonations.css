@@ -1,0 +1,139 @@
+.ngo-table-container {
+  padding: 20px;
+}
+
+.ngo-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.ngo-table th {
+  background: #3f51b5;
+  color: white;
+  padding: 10px;
+}
+
+.ngo-table td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.ngo-status {
+  padding: 5px 10px;
+  border-radius: 6px;
+  color: white;
+  font-size: 13px;
+}
+
+.status-accepted { background: #28a745; }
+.status-declined { background: #dc3545; }
+.status-completed { background: #17a2b8; }
+
+.ngo-select {
+  padding: 6px;
+  border-radius: 6px;
+}
+
+.ngo-update-btn,
+.ngo-detail-btn {
+  margin-top: 6px;
+  padding: 6px 12px;
+  border: none;
+  color: white;
+  background: #3f51b5;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.ngo-detail-btn {
+  background: #9c27b0;
+}
+
+/* Drawer */
+.ngo-drawer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.ngo-drawer {
+  width: 340px;
+  background: white;
+  padding: 20px;
+  height: 100%;
+  box-shadow: -4px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.ngo-close-btn {
+  margin-top: 20px;
+  padding: 10px;
+  background: #333;
+  color: white;
+  width: 100%;
+  border-radius: 6px;
+}
+.drawer-section {
+  margin-bottom: 18px;
+}
+
+.drawer-section h3 {
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #333;
+}
+
+.donor-card {
+  background: #f5f7fb;
+  padding: 14px;
+  border-radius: 10px;
+}
+
+.donor-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.donor-row a {
+  color: #3f51b5;
+  text-decoration: none;
+}
+
+.donor-row a:hover {
+  text-decoration: underline;
+}
+
+.ngo-table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.ngo-excel-btn {
+  background: linear-gradient(135deg, #0a78ff, #0047cc);
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(10, 120, 255, 0.35);
+  transition: 0.25s ease;
+}
+
+.ngo-excel-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(10, 120, 255, 0.45);
+}

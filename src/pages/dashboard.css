@@ -1,0 +1,229 @@
+/* ===== DASHBOARD LAYOUT ===== */
+
+.dashboard-main {
+  margin-left: 240px;
+  padding: 28px;
+  min-height: calc(100vh - 60px);
+  background:
+    linear-gradient(rgba(246,248,255,0.94), rgba(238,243,255,0.94)),
+    url("../assets/root image.avif");
+  background-size: cover;
+  background-position: center;
+}
+
+/* ===== TOP SECTION ===== */
+
+.dashboard-top {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+/* ===== WELCOME ===== */
+
+.welcome-box {
+  background: linear-gradient(135deg, #4f6cff, #3b57e8);
+  color: white;
+  padding: 32px;
+  border-radius: 20px;
+  box-shadow: 0 18px 40px rgba(79,108,255,0.35);
+  animation: welcomeEnter 0.6s ease;
+}
+
+.welcome-split {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.welcome-text {
+  flex: 1.2;
+}
+
+.welcome-box h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.welcome-box p {
+  font-size: 15px;
+  margin-bottom: 22px;
+  line-height: 1.5;
+}
+
+.welcome-box button {
+  background: white;
+  color: #3b57e8;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* IMAGE INSIDE CARD (NO OVERLAP) */
+.welcome-visual {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.welcome-visual img {
+  width: 220px;
+  max-width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+}
+
+/* ===== STATS ===== */
+
+.stats-box {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.stat {
+  background: white;
+  border-radius: 18px;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+}
+
+.stat h2 {
+  font-size: 28px;
+  color: #3b57e8;
+}
+
+.stat span {
+  font-size: 13px;
+  color: #555;
+  font-weight: 600;
+}
+
+/* ===== ACTIONS ===== */
+
+.dashboard-actions-wrapper {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+}
+
+.action-card {
+  background: white;
+  border-radius: 20px;
+  padding: 26px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+
+.action-card:hover {
+  transform: translateY(-6px);
+}
+
+.action-card img {
+  width: 56px;
+  margin-bottom: 14px;
+}
+
+/* ===== IMPACT PANEL ===== */
+
+.dashboard-impact-panel {
+  background: white;
+  border-radius: 20px;
+  padding: 26px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+
+.dashboard-impact-panel button {
+  margin-top: 16px;
+  background: linear-gradient(135deg, #4f6cff, #3b57e8);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 14px;
+  font-weight: 600;
+}
+
+/* ===== ANIMATION ===== */
+
+@keyframes welcomeEnter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 1100px) {
+  .dashboard-top {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-actions-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .welcome-visual {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .dashboard-main {
+    margin-left: 0;
+  }
+}
+/* ===== IMPACT QUOTE (POLISHED) ===== */
+
+.impact-quote {
+  margin-top: 22px;
+  padding: 16px 18px;
+  border-left: 4px solid #4f6cff;
+  background: linear-gradient(
+    to right,
+    rgba(79,108,255,0.08),
+    rgba(79,108,255,0.02)
+  );
+  border-radius: 12px;
+  font-size: 14px;
+  font-style: italic;
+  color: #444;
+  line-height: 1.6;
+}
+
+.impact-quote span {
+  display: block;
+  margin-top: 10px;
+  text-align: right;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  color: #555;
+}
+.dashboard-impact-panel button {
+  margin-top: 18px;
+  background: linear-gradient(135deg, #4f6cff, #3b57e8);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dashboard-impact-panel button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(79,108,255,0.35);
+}

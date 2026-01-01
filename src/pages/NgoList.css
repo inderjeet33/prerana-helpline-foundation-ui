@@ -1,0 +1,58 @@
+/* Page layout */
+.ngo-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* Page title */
+.ngo-title {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+/* Card-style table container */
+.ngo-card {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Table styling */
+.ngo-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ngo-table th {
+  background: #f4f4f4;
+  padding: 14px;
+  font-size: 15px;
+  text-align: center;
+  font-weight: 600;
+  color: #444;
+  border-bottom: 2px solid #ddd;
+}
+
+.ngo-table td {
+  padding: 13px;
+  text-align: center;    /* fixes left alignment issue */
+  border-bottom: 1px solid #ececec;
+  font-size: 15px;
+  color: #333;
+}
+
+/* Hover effect */
+.ngo-table tr:hover td {
+  background: #fafafa;
+}
+
+/* First row fix (padding inconsistency) */
+.ngo-table tbody tr:first-child td {
+  padding-top: 15px;
+}

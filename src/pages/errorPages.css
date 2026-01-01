@@ -1,0 +1,53 @@
+.error-wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, #f6f9ff, #eef3ff);
+}
+
+.error-card {
+  background: white;
+  padding: 40px;
+  width: 420px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0px 4px 20px rgba(0,0,0,0.08);
+}
+
+.error-card h1 {
+  font-size: 72px;
+  margin: 0;
+  color: #4b5cff;
+}
+
+.error-card h2 {
+  margin: 10px 0;
+  color: #2a3366;
+}
+
+.error-card p {
+  font-size: 15px;
+  color: #666;
+  margin: 15px 0 25px;
+}
+
+.error-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.error-actions button {
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  background: #eef0ff;
+}
+
+.error-actions button.primary {
+  background: #4b5cff;
+  color: white;
+}

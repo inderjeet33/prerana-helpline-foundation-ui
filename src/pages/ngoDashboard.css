@@ -1,0 +1,111 @@
+/* ===== PAGE ===== */
+.ngo-dashboard-container {
+  min-height: 100vh;
+  background: #f7f9fc;
+  padding: 30px 20px;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* ===== HERO ===== */
+.ngo-hero {
+  max-width: 1100px;
+  margin: 0 auto 35px;
+  background: linear-gradient(135deg, #0a78ff, #3f9cff);
+  color: white;
+  border-radius: 20px;
+  padding: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.ngo-hero-text h1 {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.ngo-hero-text p {
+  font-size: 16px;
+  opacity: 0.95;
+  max-width: 500px;
+}
+
+.ngo-hero-image img {
+  width: 280px;
+  max-width: 100%;
+}
+
+/* ===== STATS ===== */
+.ngo-stats {
+  max-width: 1100px;
+  margin: 25px auto 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.ngo-stat {
+  background: white;
+  padding: 22px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.ngo-stat h2 {
+  font-size: 28px;
+  color: #0a78ff;
+  margin-bottom: 5px;
+}
+
+.ngo-stat span {
+  font-size: 14px;
+  color: #666;
+}
+
+/* ===== CARDS ===== */
+.ngo-cards {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 25px;
+}
+
+.ngo-card {
+  background: #fff;
+  padding: 25px;
+  border-radius: 18px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  text-align: center;
+}
+
+.ngo-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+.card-icon {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.ngo-card h3 {
+  font-size: 18px;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.ngo-card p {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Gallery Highlight */
+.ngo-card.gallery {
+  border: 2px dashed #0a78ff;
+  background: linear-gradient(145deg, #ffffff, #f0f6ff);
+}

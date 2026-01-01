@@ -1,0 +1,5 @@
+.ngo-content {
+  padding: 30px;
+  background: #f8f9fc;
+  min-height: calc(100vh - 70px);
+}

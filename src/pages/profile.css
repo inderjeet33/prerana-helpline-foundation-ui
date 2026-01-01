@@ -1,0 +1,183 @@
+.profile-container {
+  min-height: calc(100vh - 70px);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 40px;
+  background: #f5f7fb;
+}
+
+.profile-card {
+  background: white;
+  width: 420px;
+  padding: 28px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.profile-card h2 {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.profile-section {
+  margin-bottom: 22px;
+}
+
+.profile-section h4 {
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #555;
+  text-transform: uppercase;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 14px;
+}
+
+.field label {
+  font-size: 13px;
+  margin-bottom: 4px;
+  color: #666;
+}
+
+.field input {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.field input:disabled {
+  background: #f1f1f1;
+}
+
+.save-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.save-btn:hover {
+  background: #1e4ed8;
+}
+/* PAGE BACKGROUND */
+.profile-page {
+  min-height: calc(100vh - 70px);
+  background: linear-gradient(
+    135deg,
+    #e8f0ff 0%,
+    #f6fff9 100%
+  );
+  padding-bottom: 60px;
+}
+
+/* HERO SECTION */
+.profile-hero {
+  text-align: center;
+  padding: 50px 20px 30px;
+}
+
+.profile-hero h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+  color: #1f2937;
+}
+
+.profile-hero p {
+  max-width: 520px;
+  margin: 0 auto;
+  font-size: 15px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* CARD CONTAINER */
+.profile-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+/* PROFILE CARD */
+.profile-card {
+  background: white;
+  width: 440px;
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+/* ACCENT STRIP */
+.profile-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 6px;
+  width: 100%;
+  background: linear-gradient(90deg, #2563eb, #22c55e);
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+}
+
+/* SECTIONS */
+.profile-section {
+  margin-bottom: 22px;
+}
+
+.profile-section h4 {
+  margin-bottom: 12px;
+  font-size: 13px;
+  color: #6b7280;
+  text-transform: uppercase;
+}
+
+/* FIELDS */
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 14px;
+}
+
+.field label {
+  font-size: 13px;
+  margin-bottom: 4px;
+  color: #6b7280;
+}
+
+.field input {
+  padding: 11px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+}
+
+.field input:disabled {
+  background: #f3f4f6;
+}
+
+/* SAVE BUTTON */
+.save-btn {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #2563eb, #1e40af);
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.save-btn:hover {
+  opacity: 0.95;
+}

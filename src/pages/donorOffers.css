@@ -1,0 +1,68 @@
+.donor-offers-container {
+  padding: 40px;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #f7f9fc;
+  min-height: 100vh;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+/* Table Wrapper */
+.table-wrapper {
+  background: #fff;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+  overflow-x: auto;
+}
+
+/* Table Styling */
+.offers-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+}
+
+.offers-table thead tr {
+  background: #eef2f7;
+}
+
+.offers-table th {
+  text-align: left;
+  padding: 14px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+}
+
+.offers-table td {
+  padding: 14px;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+  color: #444;
+}
+
+/* Hover Effect */
+.offers-table tbody tr:hover {
+  background: #fafcff;
+}
+
+/* Dropdown */
+.dropdown {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  background: #fff;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.dropdown:hover {
+  border-color: #888;
+}

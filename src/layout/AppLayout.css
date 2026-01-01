@@ -1,0 +1,21 @@
+:root {
+  --navbar-height: 64px;
+  --sidebar-width: 240px;
+}
+
+/* MAIN CONTENT AREA */
+.app-content {
+  margin-top: var(--navbar-height);
+  margin-left: var(--sidebar-width);
+  padding: 32px;
+  min-height: calc(100vh - var(--navbar-height));
+  background: #f6f8ff;
+}
+
+/* MOBILE */
+@media (max-width: 1024px) {
+  .app-content {
+    margin-left: 0;
+    padding: 20px;
+  }
+}
