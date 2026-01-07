@@ -1,41 +1,4 @@
-// import { NavLink } from "react-router-dom";
-// import "./ngoNav.css";
 
-// export default function NgoNav() {
-//   return (
-//     <header className="ngo-nav-container">
-//       <div className="ngo-nav-left">
-//         <h2 className="ngo-logo">Prerana</h2>
-        
-//         <nav className="ngo-nav">
-//           <NavLink to="/ngo-donations" className="ngo-nav-item">
-//             Donations
-//           </NavLink>
-
-//           <NavLink to="/ngo/assigned-offers" className="ngo-nav-item">
-//             Assigned Offers
-//           </NavLink>
-
-//           <div className="ngo-dropdown">
-//             <span className="ngo-dropdown-title">Campaigns ▾</span>
-//             <div className="ngo-dropdown-menu">
-//               <NavLink to="/campaign/create" className="ngo-dropdown-item">
-//                 Create Campaign
-//               </NavLink>
-//               <NavLink to="/campaign/my-campaigns" className="ngo-dropdown-item">
-//                 My Campaigns
-//               </NavLink>
-//             </div>
-//           </div>
-//         </nav>
-//       </div>
-
-//       <div className="ngo-nav-right">
-//         <span className="ngo-user-badge">NGO Panel</span>
-//       </div>
-//     </header>
-//   );
-// }
 import { NavLink, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
@@ -64,6 +27,10 @@ export default function NgoNav() {
         <nav className="ngo-nav">
           <NavLink to="/ngo-dashboard" className="ngo-link">
             Dashboard
+          </NavLink>
+
+          <NavLink to="/ngo/profile" className="ngo-link">
+            Profile
           </NavLink>
 
           <NavLink to="/ngo-donations" className="ngo-link">

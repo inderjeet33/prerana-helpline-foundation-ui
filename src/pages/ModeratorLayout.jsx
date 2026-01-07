@@ -40,11 +40,11 @@ export default function ModeratorLayout() {
       <aside className="mod-sidebar">
         {/* Profile */}
         <div className="mod-profile">
-          <img
+          {/* <img
             src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
             alt="Profile"
             className="mod-avatar-img"
-          />
+          /> */}
           <div className="mod-profile-info">
             <h3 className="mod-name">{user?.name}</h3>
             <p className="mod-role">Moderator</p>

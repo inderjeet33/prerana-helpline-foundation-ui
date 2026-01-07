@@ -189,9 +189,9 @@ export default function Dashboard() {
               </button>
             </div>
 
-            <div className="welcome-visual">
+            {/* <div className="welcome-visual">
               <img src={impactHero} alt="Community impact" />
-            </div>
+            </div> */}
           </div>
 
           {/* STATS */}
