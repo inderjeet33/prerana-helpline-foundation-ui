@@ -1,3 +1,5 @@
+
+
 // import React, { useEffect, useState } from "react";
 // import "./ngoGallery.css";
 
@@ -6,9 +8,9 @@
 //   const [file, setFile] = useState(null);
 //   const [caption, setCaption] = useState("");
 //   const [loading, setLoading] = useState(false);
-//   const [selectedIndex, setSelectedIndex] = useState(null);
 
 //   const [selectedImage, setSelectedImage] = useState(null);
+//   const [selectedIndex, setSelectedIndex] = useState(null);
 
 //   useEffect(() => {
 //     loadImages();
@@ -19,9 +21,8 @@
 //     const res = await fetch("http://localhost:8080/gallery/ngo/my", {
 //       headers: { Authorization: "Bearer " + token },
 //     });
-//     const images = await res.json();
-//     console.log("images are ",images);
-//     setImages(images);
+//     const data = await res.json();
+//     setImages(data);
 //   }
 
 //   async function uploadImage() {
@@ -46,8 +47,8 @@
 
 //     setFile(null);
 //     setCaption("");
-//     loadImages();
 //     setLoading(false);
+//     loadImages();
 //   }
 
 //   return (
@@ -77,17 +78,16 @@
 
 //       {/* Gallery */}
 //       <div className="gallery-grid">
-//         {images.map((img,index) => (
-//           <div className="gallery-card" key={img}>
-//            <img
-//   src={`http://localhost:8080${img.imagePath || img}`}
-//   alt="impact"
-//   onClick={() => {
-//   setSelectedImage(img);
-//   setSelectedIndex(index);
-// }}
-
-// />
+//         {/* {images.map((img, index) => (
+//           <div className="gallery-card" key={img || index}>
+//             <img
+//               src={`http://localhost:8080${img}`}
+//               alt="impact"
+//               onClick={() => {
+//                 setSelectedImage(img);
+//                 setSelectedIndex(index);
+//               }}
+//             />
 //             <div className="gallery-info">
 //               <span>{img.caption}</span>
 //               <span className={`status ${true ? "approved" : "pending"}`}>
@@ -95,77 +95,116 @@
 //               </span>
 //             </div>
 //           </div>
-//         ))}
+//         ))} */}
+//         {images.map((img, index) => (
+//   <div className="gallery-card" key={img.id}>
+//     <img
+//       src={`http://localhost:8080${img.imageUrl}`}
+//       alt="impact"
+//       onClick={() => {
+//         setSelectedImage(img);
+//         setSelectedIndex(index);
+//       }}
+//     />
+
+//     <div className="gallery-info">
+//       <span className="caption">{img.caption || "No caption"}</span>
+
+//       <span
+//         className={`status ${
+//           img.status === "APPROVED"
+//             ? "approved"
+//             : img.status === "REJECTED"
+//             ? "rejected"
+//             : "pending"
+//         }`}
+//       >
+//         {img.status}
+//       </span>
+//     </div>
+
+//     {img.status === "REJECTED" && img.rejectReason && (
+//       <div className="reject-reason">
+//         ❌ {img.rejectReason}
 //       </div>
+//     )}
+//   </div>
+// ))}
+
+//       </div>
+
+//       {/* LIGHTBOX */}
 //       {selectedImage && (
-//   <div className="lightbox" onClick={() => setSelectedImage(null)}>
-//     <img
-//       src={`http://localhost:8080${selectedImage.imagePath || selectedImage}`}
-//       alt="Large view"
-//       onClick={(e) => e.stopPropagation()}
-//     />
-//     {selectedImage && (
-//   <div className="lightbox">
-    
-//     {/* Close */}
-//     <span className="lightbox-close" onClick={() => {
-//       setSelectedImage(null);
-//       setSelectedIndex(null);
-//     }}>
-//       ✕
-//     </span>
+//         <div
+//           className="lightbox"
+//           onClick={() => {
+//             setSelectedImage(null);
+//             setSelectedIndex(null);
+//           }}
+//         >
+//           {/* Close */}
+//           <span
+//             className="lightbox-close"
+//             onClick={(e) => {
+//               e.stopPropagation();
+//               setSelectedImage(null);
+//               setSelectedIndex(null);
+//             }}
+//           >
+//             ✕
+//           </span>
 
-//     {/* Previous */}
-//     {selectedIndex > 0 && (
-//       <span
-//         className="lightbox-nav left"
-//         onClick={() => {
-//           const newIndex = selectedIndex - 1;
-//           setSelectedIndex(newIndex);
-//           setSelectedImage(images[newIndex]);
-//         }}
-//       >
-//         ‹
-//       </span>
-//     )}
+//           {/* Previous */}
+//           {selectedIndex > 0 && (
+//             <span
+//               className="lightbox-nav left"
+//               onClick={(e) => {
+//                 e.stopPropagation();
+//                 const newIndex = selectedIndex - 1;
+//                 setSelectedIndex(newIndex);
+//                 setSelectedImage(images[newIndex]);
+//               }}
+//             >
+//               ‹
+//             </span>
+//           )}
 
-//     {/* Image */}
-//     <img
-//       src={`http://localhost:8080${selectedImage}`}
-//       alt="Large view"
-//     />
+//           {/* Image */}
+//           <img
+//             src={`http://localhost:8080${selectedImage.imageUrl}`}
+//             alt="Large view"
+//             onClick={(e) => e.stopPropagation()}
+//           />
 
-//     {/* Next */}
-//     {selectedIndex < images.length - 1 && (
-//       <span
-//         className="lightbox-nav right"
-//         onClick={() => {
-//           console.log("selected index is ",selectedIndex);
-//           console.log(images);
-//           const newIndex = selectedIndex + 1;
-//           console.log(newIndex);
-//           setSelectedIndex(newIndex);
-//           setSelectedImage(images[newIndex]);
-//         }}
-//       >
-//         ›
-//       </span>
-//     )}
+//           {/* Next */}
+//           {selectedIndex < images.length - 1 && (
+//             <span
+//               className="lightbox-nav right"
+//               onClick={(e) => {
+//                 e.stopPropagation();
+//                 const newIndex = selectedIndex + 1;
+//                 setSelectedIndex(newIndex);
+//                 setSelectedImage(images[newIndex]);
+//               }}
+//             >
+//               ›
+//             </span>
+//           )}
 
-//     {/* Caption */}
-//     {selectedImage.caption && (
-//       <p className="lightbox-caption">{selectedImage.caption}</p>
-//     )}
-//   </div>
-// )}
-
-//   </div>
-// )}
-
+//           {/* Caption */}
+//           {selectedImage.caption && (
+//             <p
+//               className="lightbox-caption"
+//               onClick={(e) => e.stopPropagation()}
+//             >
+//               {selectedImage.caption}
+//             </p>
+//           )}
+//         </div>
+//       )}
 //     </div>
 //   );
 // }
-
 import React, { useEffect, useState } from "react";
 import "./ngoGallery.css";
 
@@ -245,21 +284,37 @@ export default function NgoGallery() {
       {/* Gallery */}
       <div className="gallery-grid">
         {images.map((img, index) => (
-          <div className="gallery-card" key={img || index}>
+          <div className="gallery-card" key={img.id}>
             <img
-              src={`http://localhost:8080${img}`}
+              src={`http://localhost:8080${img.imageUrl}`}
               alt="impact"
               onClick={() => {
                 setSelectedImage(img);
                 setSelectedIndex(index);
               }}
             />
+
             <div className="gallery-info">
-              <span>{img.caption}</span>
-              <span className={`status ${true ? "approved" : "pending"}`}>
-                {img.approved ? "Approved" : "Pending"}
+              <span className="caption">{img.caption || "No caption"}</span>
+
+              <span
+                className={`status ${
+                  img.status === "APPROVED"
+                    ? "approved"
+                    : img.status === "REJECTED"
+                    ? "rejected"
+                    : "pending"
+                }`}
+              >
+                {img.status}
               </span>
             </div>
+
+            {img.status === "REJECTED" && img.rejectReason && (
+              <div className="reject-reason">
+                ❌ {img.rejectReason}
+              </div>
+            )}
           </div>
         ))}
       </div>
@@ -302,7 +357,7 @@ export default function NgoGallery() {
 
           {/* Image */}
           <img
-            src={`http://localhost:8080${selectedImage}`}
+            src={`http://localhost:8080${selectedImage.imageUrl}`}
             alt="Large view"
             onClick={(e) => e.stopPropagation()}
           />
@@ -329,6 +384,18 @@ export default function NgoGallery() {
               onClick={(e) => e.stopPropagation()}
             >
               {selectedImage.caption}
+            </p>
+          )}
+
+          {/* Status in preview */}
+          <p className={`status ${selectedImage.status.toLowerCase()}`}>
+            {selectedImage.status}
+          </p>
+
+          {/* Reject reason in preview */}
+          {selectedImage.status === "REJECTED" && selectedImage.rejectReason && (
+            <p className="reject-reason">
+              ❌ {selectedImage.rejectReason}
             </p>
           )}
         </div>

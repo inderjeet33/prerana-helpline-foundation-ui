@@ -1,0 +1,63 @@
+.app-footer {
+  background: #0f172a;
+  color: #cbd5f5;
+  padding: 48px 20px 24px;
+  margin-top: 60px;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 32px;
+}
+
+.footer-col h4 {
+  margin-bottom: 12px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.footer-col a {
+  display: block;
+  color: #cbd5f5;
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 8px;
+  transition: color 0.2s ease;
+}
+
+.footer-col a:hover {
+  color: #60a5fa;
+}
+
+.footer-text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #94a3b8;
+}
+
+.footer-bottom {
+  margin-top: 32px;
+  text-align: center;
+  font-size: 13px;
+  color: #94a3b8;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 16px;
+}
+
+.app-footer {
+  background: #0f172a;
+  color: #e5e7eb;
+
+  padding: 24px;
+  text-align: center;
+
+  margin-left: 240px;  
+}
+
+.no-sidebar .app-footer {
+  margin-left: 0;
+}

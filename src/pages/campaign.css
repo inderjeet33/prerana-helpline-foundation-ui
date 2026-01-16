@@ -364,3 +364,84 @@ input, select, textarea {
   background: #e5e7eb;
   margin: 16px 0;
 }
+
+/* 🔥 Edit Campaign UI */
+.edit-campaign-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 24px;
+  margin: 25px 0;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.edit-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+  color: #111;
+}
+
+.edit-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.edit-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.edit-field.full {
+  grid-column: span 2;
+}
+
+.edit-field label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #444;
+}
+
+.edit-field input,
+.edit-field textarea {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.edit-field textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.edit-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.edit-save-btn {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.edit-save-btn:hover {
+  background: #1e4fd8;
+}
+
+.edit-cancel-btn {
+  background: #e5e7eb;
+  color: #111;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}

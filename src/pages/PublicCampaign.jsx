@@ -42,7 +42,7 @@ export default function PublicCampaigns() {
       return;
     }
 
-    navigate(`/campaigns/${campaignId}`);
+    navigate(`/individual/campaigns/${campaignId}`);
   };
 
   if (loading) {
@@ -69,7 +69,7 @@ export default function PublicCampaigns() {
               <img
                 src={`http://localhost:8080${c.imageUrl}`}
                 alt={c.title}
-                onClick={() => navigate(`/campaign/${c.id}`)}
+                onClick={() => navigate(`/individual/campaign/${c.id}`)}
                 className="public-campaign-img"
               />
 

@@ -1,5 +1,4 @@
-/* Navbar Main Container */
-.ngo-header {
+/* .ngo-header {
   width: 100%;
   height: 65px;
   background: #ffffff;
@@ -13,7 +12,6 @@
   z-index: 10;
 }
 
-/* Left side */
 .ngo-left {
   display: flex;
   align-items: center;
@@ -26,7 +24,6 @@
   color: #2c3e50;
 }
 
-/* Navigation Links */
 .ngo-nav {
   display: flex;
   align-items: center;
@@ -47,7 +44,6 @@
   border-bottom: 2px solid #0a78ff;
 }
 
-/* Dropdown */
 .ngo-dropdown {
   position: relative;
   cursor: pointer;
@@ -89,7 +85,6 @@
   color: #0a78ff;
 }
 
-/* User Section */
 .ngo-right {
   position: relative;
 }
@@ -101,7 +96,6 @@
   cursor: pointer;
 }
 
-/* Default avatar */
 .ngo-avatar {
   width: 34px;
   height: 34px;
@@ -113,7 +107,6 @@
   color: #333;
 }
 
-/* Drop-down user menu */
 .ngo-user-menu {
   position: absolute;
   top: 50px;
@@ -142,4 +135,276 @@
 .logout {
   color: red;
   font-weight: bold;
+} */
+/* ============================
+   NGO NAVBAR – PRODUCT STYLE
+   ============================ */
+
+.ngo-header {
+  width: 100%;
+  height: 68px;
+
+  background: linear-gradient(90deg, #2563eb, #1e40af);
+  border-bottom: none;
+
+  padding: 0 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  position: sticky;
+  top: 0;
+  z-index: 50;
+
+  box-shadow: 0 8px 22px rgba(37, 99, 235, 0.35);
+}
+
+/* ============================
+   LEFT SECTION
+   ============================ */
+
+.ngo-left {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+/* Logo */
+.ngo-logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.3px;
+}
+
+.ngo-logo-dot {
+  color: #bfdbfe;
+}
+
+/* ============================
+   NAV LINKS
+   ============================ */
+
+.ngo-nav {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.ngo-link {
+  position: relative;
+
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  color: #e0e7ff;
+
+  padding: 8px 4px;
+  transition: color 0.2s ease;
+}
+
+/* Hover */
+.ngo-link:hover {
+  color: #ffffff;
+}
+
+/* Active underline animation */
+.ngo-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: #ffffff;
+  transition: width 0.25s ease;
+}
+
+.ngo-link:hover::after,
+.ngo-link.active::after {
+  width: 100%;
+}
+
+.ngo-link.active {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* ============================
+   DROPDOWN
+   ============================ */
+
+.ngo-dropdown {
+  position: relative;
+}
+
+.ngo-dropdown-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: #e0e7ff;
+  cursor: pointer;
+}
+
+.ngo-dropdown-content {
+  display: none;
+  flex-direction: column;
+
+  position: absolute;
+  top: 100%;
+  left: 0;
+
+  min-width: 190px;
+
+  background: white;
+  border-radius: 12px;
+  padding: 8px 0;
+
+  box-shadow: 0 10px 28px rgba(0,0,0,0.18);
+
+  z-index: 100;
+}
+
+.ngo-dropdown:hover .ngo-dropdown-content {
+  display: flex;
+}
+
+.ngo-dropdown-item {
+  padding: 12px 16px;
+  font-size: 14px;
+  color: #334155;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+
+.ngo-dropdown-item:hover {
+  background: #f1f5f9;
+  color: #2563eb;
+}
+
+/* ============================
+   RIGHT SECTION
+   ============================ */
+
+.ngo-right {
+  position: relative;
+}
+
+/* .ngo-user-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+
+  padding: 8px 14px;
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.12);
+  transition: background 0.15s ease;
+}
+
+.ngo-user-section:hover {
+  background: rgba(255, 255, 255, 0.2);
+} */
+
+.ngo-user-section {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+
+  padding: 8px 14px;
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.15);
+  transition: all 0.15s ease;
+  border: 1px solid rgba(255,255,255,0.25);
+}
+
+.ngo-user-section:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+.ngo-username {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.ngo-chevron {
+  font-size: 12px;
+  color: #e0e7ff;
+  transition: transform 0.2s ease;
+}
+
+.ngo-user-section.open .ngo-chevron {
+  transform: rotate(180deg);
+}
+
+/* ============================
+   USER MENU
+   ============================ */
+
+/* .ngo-user-menu {
+  position: absolute;
+  top: 54px;
+  right: 0;
+
+  width: 170px;
+  background: white;
+  border-radius: 14px;
+
+  box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+
+  overflow: hidden;
+} */
+.ngo-user-menu {
+  position: absolute;
+  top: 56px;
+  right: 0;
+
+  width: 180px;
+  background: white;
+  border-radius: 14px;
+
+  display: flex;
+  flex-direction: column;   /* 🔥 THIS FIXES HORIZONTAL ISSUE */
+
+  box-shadow: 0 14px 35px rgba(0,0,0,0.2);
+  overflow: hidden;
+
+  animation: dropdownFade 0.15s ease;
+}
+
+@keyframes dropdownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.ngo-user-menu-item {
+  padding: 12px 16px;
+  font-size: 14px;
+  color: #334155;
+  text-decoration: none;
+  cursor: pointer;
+
+  transition: background 0.15s ease;
+}
+
+.ngo-user-menu-item:hover {
+  background: #f1f5f9;
+  color: #2563eb;
+}
+
+.logout {
+  color: #dc2626;
+  font-weight: 600;
 }

@@ -1,0 +1,16 @@
+.ngo-layout-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.ngo-content {
+  flex: 1;
+  padding: 32px;
+  background: #f8fafc;
+}
+
+/* Footer should be full width */
+.ngo-layout-wrapper .app-footer {
+  margin-left: 0;
+}

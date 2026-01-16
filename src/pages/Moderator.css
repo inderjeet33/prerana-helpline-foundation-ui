@@ -437,11 +437,24 @@
   z-index: 2000;
 }
 
-.mod-modal {
+/* .mod-modal {
   width: 520px;
   background: white;
   border-radius: 18px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+  animation: modalFade 0.2s ease;
+} */
+
+.mod-modal {
+  width: 520px;
+  max-height: 90vh;          /* 🔥 KEY */
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+
+  display: flex;             /* 🔥 */
+  flex-direction: column;    /* 🔥 */
+
   animation: modalFade 0.2s ease;
 }
 
@@ -472,8 +485,13 @@
   color: var(--text-muted);
 }
 
+/* .mod-modal-content {
+  padding: 22px;
+} */
 .mod-modal-content {
   padding: 22px;
+  overflow-y: auto;      /* 🔥 THIS FIXES IT */
+  flex: 1;               /* 🔥 takes remaining space */
 }
 
 /* NGO DETAILS GRID */
@@ -590,4 +608,529 @@
 .mod-sub {
   font-size: 14px;
   color: #64748b;
+}
+/* ============================
+   MODERATOR NGO DETAIL POLISH
+   (SAFE ADD-ON)
+   ============================ */
+
+/* Section titles inside modal */
+.section-title {
+  margin: 24px 0 12px;
+  padding-bottom: 6px;
+
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-light);
+}
+
+/* Improve NGO detail grid readability */
+.ngo-details-grid {
+  margin-bottom: 8px;
+}
+
+.ngo-details-grid div {
+  background: #f8fafc;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border-light);
+
+  transition: background 0.15s ease;
+}
+
+.ngo-details-grid div:hover {
+  background: #f1f5f9;
+}
+
+.ngo-details-grid span {
+  font-size: 10px;
+  font-weight: 700;
+}
+
+/* ============================
+   IMPACT GALLERY (MODERATOR)
+   ============================ */
+
+.impact-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.impact-gallery img {
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+
+  border-radius: 12px;
+  border: 1px solid var(--border-light);
+
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+  cursor: pointer;
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.impact-gallery img:hover {
+  transform: scale(1.04);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.16);
+}
+
+/* Empty gallery message */
+.impact-gallery p {
+  grid-column: 1 / -1;
+  font-size: 13px;
+  color: var(--text-muted);
+  text-align: center;
+  padding: 16px 0;
+}
+
+/* ============================
+   MODAL CONTENT SPACING
+   ============================ */
+
+.mod-modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* ============================
+   VERIFY / REJECT BAR (STRONG)
+   ============================ */
+
+.ngo-action-bar {
+  padding-top: 18px;
+  border-top: 1px dashed var(--border-light);
+}
+
+.verify-btn,
+.reject-btn {
+  min-width: 120px;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+}
+
+/* Make decisions feel intentional */
+.verify-btn {
+  box-shadow: 0 8px 18px rgba(22, 163, 74, 0.25);
+}
+
+.reject-btn {
+  box-shadow: 0 8px 18px rgba(153, 27, 27, 0.15);
+}
+
+/* ============================
+   MODAL WIDTH RESPONSIVENESS
+   ============================ */
+
+@media (max-width: 640px) {
+  .mod-modal {
+    width: 94%;
+  }
+
+  .ngo-details-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* ============================
+   NGO REJECTION BANNER
+   ============================ */
+
+.ngo-rejection-banner {
+  margin: 20px 0;
+  padding: 18px 22px;
+
+  border-radius: 14px;
+  border: 1px solid #fecaca;
+  background: #fff1f2;
+
+  box-shadow: 0 8px 20px rgba(153, 27, 27, 0.12);
+}
+
+.ngo-rejection-banner h3 {
+  margin: 0 0 8px;
+  color: #991b1b;
+  font-size: 18px;
+}
+
+.ngo-rejection-banner .reason {
+  margin: 6px 0;
+  color: #7f1d1d;
+  font-size: 14px;
+}
+
+.ngo-rejection-banner .hint {
+  margin: 6px 0 14px;
+  font-size: 13px;
+  color: #374151;
+}
+
+.resubmit-btn {
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+
+  background: #dc2626;
+  color: white;
+
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.resubmit-btn:hover {
+  background: #b91c1c;
+}
+
+/* Disable cards when rejected */
+.ngo-card.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+/* ============================
+   NGO STATUS BADGE
+   ============================ */
+
+.ngo-header-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ngo-status-badge {
+  padding: 6px 14px;
+  border-radius: 999px;
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* VERIFIED */
+.ngo-status-badge.verified {
+  background: #dcfce7;
+  color: #166534;
+  border: 1px solid #86efac;
+}
+
+/* PENDING */
+.ngo-status-badge.pending {
+  background: #fef9c3;
+  color: #92400e;
+  border: 1px solid #fde68a;
+}
+
+/* REJECTED */
+.ngo-status-badge.rejected {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+/* ============================
+   NGO DASHBOARD – STATUS PILL
+   ============================ */
+
+.ngo-header-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 6px;
+}
+
+/* Pill container */
+.ngo-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 6px 14px;
+  border-radius: 999px;
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+}
+
+/* Small dot indicator */
+.ngo-status-pill .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+/* VERIFIED */
+.ngo-status-pill.verified {
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+.ngo-status-pill.verified .dot {
+  background: #10b981;
+}
+
+/* PENDING */
+.ngo-status-pill.pending {
+  background: #fffbeb;
+  color: #92400e;
+  border: 1px solid #fde68a;
+}
+
+.ngo-status-pill.pending .dot {
+  background: #f59e0b;
+}
+
+/* REJECTED */
+.ngo-status-pill.rejected {
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.ngo-status-pill.rejected .dot {
+  background: #dc2626;
+}
+/* ============================
+   NGO DASHBOARD – PREMIUM POLISH
+   ============================ */
+
+.ngo-hero-premium {
+  background: linear-gradient(135deg, #ffffff, #f8fafc);
+  border-radius: 18px;
+  padding: 28px 32px;
+  margin-bottom: 28px;
+
+  box-shadow:
+    0 8px 24px rgba(0,0,0,0.06),
+    0 2px 6px rgba(0,0,0,0.04);
+}
+
+.ngo-hero-premium h1 {
+  font-size: 30px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.ngo-hero-subtext {
+  font-size: 15px;
+  color: #475569;
+  max-width: 520px;
+}
+
+/* ===== STATUS PILL POLISH ===== */
+.ngo-status-pill {
+  backdrop-filter: blur(6px);
+}
+
+/* ===== REJECTION BANNER (PREMIUM) ===== */
+.ngo-rejection-banner.premium {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+
+  border-left: 6px solid #dc2626;
+}
+
+.ngo-rejection-banner .icon {
+  font-size: 28px;
+  margin-top: 4px;
+}
+
+.ngo-rejection-banner .content h3 {
+  font-size: 20px;
+}
+
+/* ===== STATS ===== */
+.ngo-stats.premium {
+  gap: 24px;
+}
+
+.ngo-stat {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+
+  box-shadow:
+    0 6px 18px rgba(0,0,0,0.06);
+}
+
+.ngo-stat h2 {
+  font-size: 28px;
+}
+
+/* ===== ACTION CARDS ===== */
+.ngo-cards.premium {
+  margin-top: 30px;
+}
+
+.ngo-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ngo-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px rgba(0,0,0,0.12);
+}
+
+.ngo-card h3 {
+  font-weight: 600;
+}
+
+.ngo-card p {
+  color: #64748b;
+}
+  /* ============================
+   GALLERY CARD FIX
+   ============================ */
+
+.gallery-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+}
+
+/* Button row spacing */
+.gallery-card > div:last-child {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+/* Make buttons equal width */
+.gallery-card .verify-btn,
+.gallery-card .reject-btn {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 0;
+}
+/* ============================
+   IMAGE PREVIEW MODAL
+   ============================ */
+
+/* .image-preview-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+}
+
+.image-preview-box {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+.image-preview-box img {
+  width: auto;
+  height: auto;
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+.image-preview-close {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  background: #dc2626;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+} */
+/* ============================
+   IMAGE PREVIEW MODAL
+   ============================ */
+
+.image-preview-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+}
+
+.image-preview-box {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  background: #fff;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+  display: flex;
+  flex-direction: column;
+}
+
+.image-preview-box img {
+  max-width: 100%;
+  max-height: 65vh;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+/* Close button */
+.image-preview-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: #0f172a;
+  color: white;
+  border: none;
+  border-radius: 999px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+/* ============================
+   ACTION BAR
+   ============================ */
+
+.image-preview-actions {
+  margin-top: 14px;
+  background: #f8fafc;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+.image-preview-actions textarea {
+  width: 100%;
+  min-height: 70px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.image-action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
 }

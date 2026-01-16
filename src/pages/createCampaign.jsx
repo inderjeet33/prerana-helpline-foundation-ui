@@ -169,8 +169,10 @@ export default function CreateCampaign() {
     mediaUrls: "",      // comma separated URLs (optional)
     urgency: "MEDIUM",
     city: "",
-    state: ""
-  });
+    state: "",
+    beneficiaryType: "",
+  beneficiaryCount: ""
+    });
 
   const [imageFile, setImageFile] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -210,7 +212,9 @@ function dateToLocalEndOfDay(dateStr) {
         ownerType: form.ownerType || null,
         urgency: form.urgency || null,
         city: form.city || null,
-        state: form.state || null
+        state: form.state || null,
+        beneficiaryCount: form.beneficiaryCount || null,
+        beneficiaryType: form.beneficiaryType || null
       };
 
       // Append JSON as application/json blob so Spring can parse @RequestPart("data") -> DTO
@@ -289,6 +293,25 @@ function dateToLocalEndOfDay(dateStr) {
           <input type="number" name="targetAmount" value={form.targetAmount} onChange={handleChange} />
         </div>
 
+<div className="form-group">
+  <label>Beneficiary Type</label>
+  <input
+    name="beneficiaryType"
+    value={form.beneficiaryType}
+    onChange={handleChange}
+    placeholder="Children, Women, Elderly"
+  />
+</div>
+
+<div className="form-group">
+  <label>Beneficiary Count</label>
+  <input
+    type="number"
+    name="beneficiaryCount"
+    value={form.beneficiaryCount}
+    onChange={handleChange}
+  />
+</div>
        <div className="form-group">
   <label>Deadline</label>
   <input

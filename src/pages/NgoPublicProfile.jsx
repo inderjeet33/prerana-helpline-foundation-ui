@@ -188,12 +188,5 @@ useEffect(() => {
       )}
     </>
   );
-  <NgoReviewDrawer
-  open={ngoDrawerOpen}
-  ngo={selectedNgo}
-  onClose={() => setNgoDrawerOpen(false)}
-  onVerify={verifyNgo}
-  onReject={rejectNgo}
-/>
-
+  
 }
