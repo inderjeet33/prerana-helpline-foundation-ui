@@ -28,12 +28,22 @@ const MyCampaigns = () => {
   };
 
   return (
+  <div style={{ maxWidth: "1000px", margin: "20px auto" }}>
+    
+    <h2 style={{ marginBottom: "8px" }}>Your Campaigns</h2>
+    <p style={{ color: "#666", marginBottom: "20px" }}>
+      Every campaign here represents real lives you're impacting 💙
+    </p>
+
     <div className="campaign-list">
       {list.map((item) => (
-        <CampaignCard key={item._id} item={item} />
+        <CampaignCard key={item.id} item={item} />
       ))}
     </div>
-  );
+
+  </div>
+);
+
 };
 
 export default MyCampaigns;

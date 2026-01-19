@@ -136,7 +136,7 @@ useEffect(() => {
 
           <div className="ngo-info">
             <span>📍 {ngo.address}</span>
-            <span>📧 {ngo.receiverEmail}</span>
+            <span>📧 {ngo.email}</span>
             <span>📞 {ngo.mobile}</span>
             {ngo.website && (
               <a href={ngo.website} target="_blank" rel="noreferrer">

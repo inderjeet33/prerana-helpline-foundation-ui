@@ -84,3 +84,32 @@
 .public-donate-btn:hover {
   background: #e64a19;
 }
+/* --- Public Campaign Card Alignment Fix --- */
+
+.public-campaign-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  cursor: pointer;
+}
+
+.public-campaign-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Truncate long descriptions */
+.public-desc {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: 3.6em; /* keeps card height consistent */
+}
+
+/* Push button to bottom */
+.public-donate-btn {
+  margin-top: auto;
+}

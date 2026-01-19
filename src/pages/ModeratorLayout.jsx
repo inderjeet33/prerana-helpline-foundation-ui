@@ -7,6 +7,8 @@ import DonorOffers from "./DonorOffers";
 import NgoList from "./NgoList";
 import AssignmentHistory from "./AssignmentHistory";
 import ModeratorDashboard from "./ModeratorDashboard";
+import ModeratorCampaigns from "./ModeratorCampaigns";
+
 
 import "./Moderator.css";
 
@@ -73,6 +75,13 @@ export default function ModeratorLayout() {
           >
             🏢 NGO List
           </button>
+          <button
+  className={page === "campaigns" ? "active" : ""}
+  onClick={() => setPage("campaigns")}
+>
+  📋 Campaign Approvals
+</button>
+
 
           <button
             className={page === "history" ? "active" : ""}
@@ -104,6 +113,8 @@ export default function ModeratorLayout() {
         {page === "offers" && <DonorOffers />}
         {page === "ngos" && <NgoList />}
         {page === "history" && <AssignmentHistory />}
+        {page === "campaigns" && <ModeratorCampaigns />}
+
       </main>
     </div>
   );
