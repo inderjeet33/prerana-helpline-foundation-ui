@@ -107,18 +107,24 @@ export default function DonorOffers() {
           <option value="">All Categories</option>
           <option value="HEALTH">HEALTH</option>
           <option value="EDUCATION">EDUCATION</option>
-                    <option value="Orphans">Orphans</option>
-                    <option value="Old Age Support">Old Age Support</option>
-                    <option value="Food & clothing">Food &amp; Clothing</option>
-                    <option value="Shelter Support">Shelter Support</option>
-                    <option value="Disabled Supprot">Disabled Support</option>
+                    <option value="ORPHANS">Orphans</option>
+                    <option value="OLD_AGE">Old Age Support</option>
+                    <option value="FOOD_CLOTHING">Food &amp; Clothing</option>
+                    <option value="SHELTER">Shelter Support</option>
+                    <option value="Disabled">Disabled Support</option>
+                    <option value="OTHER">Others</option>
 
         </select>
 
         <select onChange={(e) => setFilters({ ...filters, type: e.target.value })}>
           <option value="">All Types</option>
-          <option value="MONETARY">MONETARY</option>
-          <option value="ITEM">ITEM</option>
+          <option value="FINANCIAL">FINANCIAL</option>
+                    <option value="FOOD">FOOD</option>
+          <option value="CLOTHES">CLOTHES</option>
+          <option value="BOOKS">BOOKS</option>
+          <option value="MEDICAL">MEDICAL</option>
+
+          <option value="OTHER">OTHER</option>
         </select>
 
         <select onChange={(e) => setFilters({ ...filters, status: e.target.value })}>
@@ -165,7 +171,7 @@ export default function DonorOffers() {
                 <td>{o.donationCategory}</td>
                 <td>{o.user?.fullName}</td>
                 <td>{o.reason}</td>
-                <td>{o.type}</td>
+                <td>{o.helpType}</td>
                 <td>{o.receiverName || "Not Assigned"}</td>
                 <td>{o.status}</td>
                 <td onClick={(e) => e.stopPropagation()}>

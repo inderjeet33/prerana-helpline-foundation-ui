@@ -292,3 +292,14 @@
   transform: translateY(-2px);
   box-shadow: 0 12px 30px rgba(0,0,0,0.35);
 }
+.home-page .button-group {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.home-page .btn {
+  min-width: 170px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}

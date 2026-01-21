@@ -32,7 +32,7 @@ export default function Home() {
 
           <div className="button-group">
             <Link to="/donor-auth">
-              <button className="btn primary">Donate Now</button>
+              <button className="btn primary">Individual</button>
             </Link>
 
             <Link to="/ngo-auth">

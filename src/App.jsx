@@ -54,42 +54,43 @@ import IndividualCampaignView from "./pages/individualCampaignView";
 
 function Home() {
   return (
-    <div className="hero-container">
-      {/* SMALL LOGO IN TOP LEFT */}
-      <img
-        src={logo}
-        alt="Logo"
-        style={{
-          position: "absolute",
-          top: "10px",
-          left: "10px",
-          height: "50px",
-          zIndex: 1000,
-        }}
-      />
+  //   <div className="hero-container">
+  //     {/* SMALL LOGO IN TOP LEFT */}
+  //     <img
+  //       src={logo}
+  //       alt="Logo"
+  //       style={{
+  //         position: "absolute",
+  //         top: "10px",
+  //         left: "10px",
+  //         height: "50px",
+  //         zIndex: 1000,
+  //       }}
+  //     />
 
-      <div className="overlay"></div>
+  //     <div className="overlay"></div>
 
-      <div className="hero-content">
-        <h1 className="title">Prerana Helpline Foundation</h1>
-        <p className="subtitle">
-          Empowering lives through compassion, care, and community support.
-        </p>
+  //     <div className="hero-content">
+  //       <h1 className="title">Prerana Helpline Foundation</h1>
+  //       <p className="subtitle">
+  //         Empowering lives through compassion, care, and community support.
+  //       </p>
 
-        <div className="button-group">
-          <Link to="/donor-auth">
-            <button className="btn primary">Donate Now</button>
-          </Link>
+  //       <div className="button-group">
+  //         <Link to="/donor-auth">
+  //           <button className="btn primary">Dote Now</button>
+  //         </Link>
 
-          <button className="btn secondary">Request Help</button>
-          <button className="btn secondary">CSR Partnerships</button>
-          <Link to= "/ngo-auth">
-          <button className="btn secondary">NGO Login</button>
-          </Link>
-        </div>
-      </div>
-    </div>
-  );
+  //         <button className="btn secondary">Request Help</button>
+  //         <button className="btn secondary">CSR Partnerships</button>
+  //         <Link to= "/ngo-auth">
+  //         <button className="btn secondary">NGO Login</button>
+  //         </Link>
+  //       </div>
+  //     </div>
+  //   </div>
+  // );
+  <></>);
 }
 
 export default function App() {
