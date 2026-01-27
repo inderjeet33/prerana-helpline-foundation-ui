@@ -1,0 +1,156 @@
+.help-history-page {
+  background: #f6f8fc;
+  min-height: 100vh;
+  font-family: "Inter", sans-serif;
+}
+
+.help-container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.help-header {
+  margin-bottom: 32px;
+}
+
+.help-header h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.help-header p {
+  color: #6b7280;
+  font-size: 1.05rem;
+}
+
+.help-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 26px;
+}
+
+.help-card {
+  background: white;
+  border-radius: 20px;
+  padding: 22px 24px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.help-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 45px rgba(0,0,0,0.14);
+}
+
+.help-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.help-type {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2563eb;
+}
+
+.help-status {
+  font-size: 0.75rem;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.help-status.open { background: #e0f2fe; color: #0369a1; }
+.help-status.assigned { background: #ede9fe; color: #6d28d9; }
+.help-status.in_progress { background: #fff7ed; color: #9a3412; }
+.help-status.completed { background: #dcfce7; color: #166534; }
+.help-status.cancelled { background: #fee2e2; color: #991b1b; }
+
+.help-category {
+  margin-top: 6px;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.help-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 14px;
+  font-size: 0.85rem;
+  color: #374151;
+}
+
+.help-meta span {
+  display: block;
+  color: #6b7280;
+}
+
+.help-reason {
+  margin-top: 14px;
+  font-style: italic;
+  color: #4b5563;
+}
+
+.help-actions {
+  margin-top: 16px;
+  text-align: right;
+}
+
+.help-cancel-btn {
+  background: #fee2e2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* MODAL */
+.help-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.help-modal {
+  background: white;
+  border-radius: 20px;
+  padding: 26px 28px;
+  width: 90%;
+  max-width: 680px;
+  box-shadow: 0 25px 70px rgba(0,0,0,0.3);
+}
+
+.help-modal-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.help-modal-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  font-size: 0.95rem;
+}
+
+.help-modal-reason {
+  margin-top: 18px;
+  border-top: 1px dashed #e5e7eb;
+  padding-top: 14px;
+}
+
+.help-assigned {
+  margin-top: 18px;
+  padding: 14px;
+  border-radius: 14px;
+  background: #f0f9ff;
+}

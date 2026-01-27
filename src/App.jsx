@@ -22,6 +22,7 @@ import CampaignCard from "./pages/CampaignCard";
 import MyCampaigns from "./pages/MyCampaign";
 import CampaignDetails from "./pages/CampaignDetails";
 import DonationHistory from "./pages/DonationHistory";
+import VolunteerHistory from "./pages/VolunteerHistory";
 import ModeratorLogin from "./pages/ModeratorLogin";
 import IndividualProtected from "./components/IndividualProtected";
 import NgoProtected from "./components/NgoProtected";
@@ -51,6 +52,10 @@ import ModeratorGallery from "./pages/ModeratorGallery";
 import ScrollToTop from "./components/ScrollTop";
 import NGOLayoutWithFooter from "./pages/NgoLayoutWithFooter";
 import IndividualCampaignView from "./pages/individualCampaignView";
+import Volunteer from "./pages/Volunteer";
+import NgoVolunteers from "./pages/NgoVolunteer";
+import NeedHelp from "./pages/NeedHelp";
+import HelpRequestHistory from "./pages/HelpRequestHistory";
 
 function Home() {
   return (
@@ -104,7 +109,11 @@ export default function App() {
         <Route path="/donor-auth" element={<DonorAuth />} />
         <Route path="/dashboard" element={<PublicLayout><IndividualProtected><Dashboard /></IndividualProtected></PublicLayout>} />
         <Route path="/donate" element = {<PublicLayout><IndividualProtected><Donate/></IndividualProtected></PublicLayout>}/>
+        <Route path="/volunteer" element = {<PublicLayout><IndividualProtected><Volunteer/></IndividualProtected></PublicLayout>}/>
+        <Route path="/request-help" element = {<PublicLayout><IndividualProtected><NeedHelp/></IndividualProtected></PublicLayout>}/>
+        <Route path="/help-history" element = {<PublicLayout><IndividualProtected><HelpRequestHistory/></IndividualProtected></PublicLayout>}/>
         <Route path="/donation-history" element ={<PublicLayout><IndividualProtected><DonationHistory/></IndividualProtected></PublicLayout>}/>
+        <Route path="/volunteer-history" element ={<PublicLayout><IndividualProtected><VolunteerHistory/></IndividualProtected></PublicLayout>}/>
         <Route path="/donations/:id/ngo" element={<PublicLayout><IndividualProtected><NgoPublicProfile /></IndividualProtected></PublicLayout>} />
         <Route path="/auth" element={<DonorAuth />} />
         <Route path="/donor-details" element={<PublicLayout><DonorDetails /></PublicLayout>} />
@@ -118,6 +127,7 @@ export default function App() {
 
         <Route path="/moderator-dashboard" element={<ModeratorProtected><ModeratorLayout/></ModeratorProtected>}/>
         <Route path="/ngo-donations" element ={<NgoProtected><NgoLayoutWithFooter><NgoDonations/></NgoLayoutWithFooter></NgoProtected>}/>
+        <Route path="/ngo-volunteers" element ={<NgoProtected><NgoLayoutWithFooter><NgoVolunteers/></NgoLayoutWithFooter></NgoProtected>}/>
         <Route path="/campaigns/create" element = {<PublicLayout><CampaignCreate/></PublicLayout>}/>
         <Route path="/campaign/create" element={<NgoProtected><NgoLayoutWithFooter><CreateCampaign /></NgoLayoutWithFooter></NgoProtected>} />
         <Route path="/campaign/my-campaigns" element={<NgoProtected><NgoLayoutWithFooter><MyCampaigns/> </NgoLayoutWithFooter>s</NgoProtected>}/>

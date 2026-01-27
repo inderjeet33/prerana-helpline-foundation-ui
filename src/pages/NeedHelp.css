@@ -1,0 +1,109 @@
+.need-help-page {
+  background: linear-gradient(180deg, #f4f7fb, #eef2f7);
+  min-height: 100vh;
+}
+
+.need-help-wrapper {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 32px;
+  padding: 40px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.need-help-info .info-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 28px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+  position: sticky;
+  top: 90px;
+}
+
+.info-card h1 {
+  font-size: 26px;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: #555;
+  margin-bottom: 18px;
+}
+
+.info-points {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 18px;
+}
+
+.info-points li {
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.info-note {
+  font-size: 13px;
+  color: #666;
+  background: #f7f9fc;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.form-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 32px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+}
+
+.form-card h2 {
+  margin-bottom: 20px;
+}
+
+.form-section {
+  margin-bottom: 28px;
+}
+
+.form-section h3 {
+  margin-bottom: 14px;
+  font-size: 16px;
+  color: #333;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-msg {
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.form-msg.success {
+  background: #e7f7ee;
+  color: #1b7a4b;
+}
+
+.form-msg.error {
+  background: #fdecec;
+  color: #b42318;
+}
+
+.primary-btn {
+  width: 100%;
+  padding: 14px;
+  background: #1f3c88;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.primary-btn:hover {
+  background: #162d6b;
+}

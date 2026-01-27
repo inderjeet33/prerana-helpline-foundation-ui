@@ -120,7 +120,7 @@ export default function AssignmentHistory() {
           <tbody>
             {assignments.map((a) => (
               <tr key={a.id}>
-                <td>{a.donationRequest.type || "---"}</td>
+                <td>{a.donationRequest.helpType || "---"}</td>
                 <td>{a.donor.fullName}</td>
                 <td>{a.receiver.fullName}</td>
 
