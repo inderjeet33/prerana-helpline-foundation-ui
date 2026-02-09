@@ -9,6 +9,7 @@ import AssignmentHistory from "./AssignmentHistory";
 import ModeratorDashboard from "./ModeratorDashboard";
 import ModeratorCampaigns from "./ModeratorCampaigns";
 import VolunteerOffers from "./VolunteerOffers";
+import ModeratorHelpRequests from "./ModeratorHelpRequests";
 
 
 import "./Moderator.css";
@@ -70,6 +71,14 @@ export default function ModeratorLayout() {
             🎁 Donor Offers
           </button>
 
+          <button
+  className={page === "help-requests" ? "active" : ""}
+  onClick={() => setPage("help-requests")}
+>
+  🆘 Help Requests
+</button>
+
+
 <button
   className={page === "volunteers" ? "active" : ""}
   onClick={() => setPage("volunteers")}
@@ -123,6 +132,8 @@ export default function ModeratorLayout() {
         {page === "history" && <AssignmentHistory />}
         {page === "campaigns" && <ModeratorCampaigns />}
         {page === "volunteers" && <VolunteerOffers />}
+        {page === "help-requests" && <ModeratorHelpRequests />}
+
 
 
       </main>

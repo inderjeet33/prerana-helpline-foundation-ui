@@ -116,6 +116,13 @@ return (
         <p>Manage donation offers assigned to you</p>
       </div>
 
+    <div className="ngo-card" onClick={() => navigate("/ngo-help-requests")}>
+        <div className="card-icon">🎁</div>
+        <h3>Helps Assigned</h3>
+        <p> Manage Help Requests assigned to you</p>
+      </div>
+
+
       <div className="ngo-card" onClick={() => navigate("/campaign/my-campaigns")}>
         <div className="card-icon">📢</div>
         <h3>Requests</h3>

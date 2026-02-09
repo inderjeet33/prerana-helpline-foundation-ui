@@ -1,0 +1,211 @@
+/* ===============================
+   NGO HELP REQUESTS – PREMIUM UI
+   =============================== */
+
+.ngo-table-container {
+  background: #ffffff;
+  padding: 28px;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  margin: 20px;
+}
+
+.ngo-table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 18px;
+}
+
+.ngo-table-header h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.ngo-table-header .sub {
+  font-size: 13px;
+  color: #666;
+  margin-top: 4px;
+}
+
+/* ===============================
+   TABLE
+   =============================== */
+
+.ngo-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ngo-table th {
+  text-align: left;
+  font-size: 13px;
+  color: #555;
+  padding: 12px;
+  border-bottom: 1px solid #eaeaea;
+  background: #fafafa;
+}
+
+.ngo-table td {
+  padding: 14px 12px;
+  font-size: 14px;
+  border-bottom: 1px solid #f0f0f0;
+  vertical-align: middle;
+}
+
+.ngo-table tr:hover {
+  background: #fafafa;
+}
+
+/* ===============================
+   STATUS PILLS
+   =============================== */
+
+.ngo-status {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.status-assigned {
+  background: #e0f2fe;
+  color: #0369a1;
+}
+
+.status-in_progress {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status-completed {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status-rejected_by_helper {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* ===============================
+   URGENCY
+   =============================== */
+
+.urgency {
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.urgency.immediate {
+  color: #dc2626;
+}
+
+.urgency.this {
+  color: #f59e0b;
+}
+
+.urgency.flexible {
+  color: #16a34a;
+}
+
+/* ===============================
+   ACTIONS
+   =============================== */
+
+.ngo-detail-btn {
+  background: transparent;
+  border: 1px solid #ddd;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  margin-right: 6px;
+}
+
+.ngo-detail-btn:hover {
+  background: #f4f4f4;
+}
+
+.ngo-update-btn {
+  background: #111827;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  margin-left: 6px;
+}
+
+.ngo-update-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+select {
+  padding: 6px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  font-size: 13px;
+}
+
+/* ===============================
+   MUTED TEXT
+   =============================== */
+
+.muted {
+  font-size: 12px;
+  color: #777;
+  margin-top: 2px;
+}
+
+/* ===============================
+   DRAWER
+   =============================== */
+
+.ngo-drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  justify-content: flex-end;
+  z-index: 999;
+}
+
+.ngo-drawer {
+  width: 420px;
+  background: #fff;
+  padding: 24px;
+  height: 100%;
+  overflow-y: auto;
+  animation: slideIn 0.25s ease-out;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+.ngo-drawer h3 {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.ngo-drawer p {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.ngo-close-btn {
+  margin-top: 20px;
+  background: #111827;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+}

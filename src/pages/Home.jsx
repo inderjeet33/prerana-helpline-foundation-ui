@@ -38,6 +38,10 @@ export default function Home() {
             <Link to="/ngo-auth">
               <button className="btn secondary">NGO Login</button>
             </Link>
+
+            <Link to="/csr-auth">
+              <button className="btn secondary">CSR Login</button>
+            </Link>
           </div>
 
           <div className="home-stats">

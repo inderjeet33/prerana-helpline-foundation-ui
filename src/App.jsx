@@ -11,6 +11,7 @@ import Donate from "./pages/Donate";
 import NgoSignup from "./ngo/Signup";
 import NgoOtpVerify from "./ngo/OtpVerify";
 import NgoAuth from "./pages/NgoAuth";
+import CsrAuth from "./pages/CsrAuth";
 import NgoDashboard from "./pages/NgoDashboard";
 import ModeratorDashboard from "./pages/ModeratorDashboard";
 import PublicLayout from "./components/PublicLayout";
@@ -56,46 +57,18 @@ import Volunteer from "./pages/Volunteer";
 import NgoVolunteers from "./pages/NgoVolunteer";
 import NeedHelp from "./pages/NeedHelp";
 import HelpRequestHistory from "./pages/HelpRequestHistory";
+import NgoHelpRequests from "./pages/NgoHelpRequests";
+import CsrSendOtp from "./pages/CsrSendOtp";
+import CsrVerifyOtp from "./pages/CsrVerifyOtp";
+import CsrSetPassword from "./pages/CsrSetPassword";
+import CsrBasicInfo from "./pages/CsrBasicInfo";
+import CsrLogin from "./pages/CsrLogin";
+import CsrDashboard from "./pages/CsrDashboard";
+import CsrProtected from "./components/CsrProtected";
+import CSRLayoutWithFooter from "./pages/CsrLayoutWithFooter";
 
 function Home() {
-  return (
-  //   <div className="hero-container">
-  //     {/* SMALL LOGO IN TOP LEFT */}
-  //     <img
-  //       src={logo}
-  //       alt="Logo"
-  //       style={{
-  //         position: "absolute",
-  //         top: "10px",
-  //         left: "10px",
-  //         height: "50px",
-  //         zIndex: 1000,
-  //       }}
-  //     />
-
-  //     <div className="overlay"></div>
-
-  //     <div className="hero-content">
-  //       <h1 className="title">Prerana Helpline Foundation</h1>
-  //       <p className="subtitle">
-  //         Empowering lives through compassion, care, and community support.
-  //       </p>
-
-  //       <div className="button-group">
-  //         <Link to="/donor-auth">
-  //           <button className="btn primary">Dote Now</button>
-  //         </Link>
-
-  //         <button className="btn secondary">Request Help</button>
-  //         <button className="btn secondary">CSR Partnerships</button>
-  //         <Link to= "/ngo-auth">
-  //         <button className="btn secondary">NGO Login</button>
-  //         </Link>
-  //       </div>
-  //     </div>
-  //   </div>
-  // );
-  <></>);
+  return (<></>);
 }
 
 export default function App() {
@@ -119,7 +92,12 @@ export default function App() {
         <Route path="/donor-details" element={<PublicLayout><DonorDetails /></PublicLayout>} />
         <Route path="/ngo-signup" element={<NgoSignup/>}/>
         <Route path="/ngo-auth" element={<NgoAuth/>}/>
+          <Route path="/csr-auth" element={<CsrAuth/>}/>
+
         <Route path="/ngo-dashboard" element={<NgoProtected><NgoLayoutWithFooter><NgoDashboard/></NgoLayoutWithFooter></NgoProtected>}/>
+
+        <Route path="/csr-dashboard" element={<CsrProtected><CSRLayoutWithFooter><CsrDashboard/></CSRLayoutWithFooter></CsrProtected>}/>
+
         <Route
   path="/moderator/gallery"
   element={<ModeratorProtected><ModeratorGallery /></ModeratorProtected>}
@@ -133,9 +111,10 @@ export default function App() {
         <Route path="/campaign/my-campaigns" element={<NgoProtected><NgoLayoutWithFooter><MyCampaigns/> </NgoLayoutWithFooter>s</NgoProtected>}/>
         <Route path="/campaign/:id" element={<NgoProtected><NGOLayoutWithFooter><CampaignDetails/></NGOLayoutWithFooter></NgoProtected>} />
         <Route path="/individual/campaign/:id" element={<PublicLayout><IndividualProtected><IndividualCampaignView/></IndividualProtected></PublicLayout>} />
-        
+        <Route path="/ngo-help-requests" element={<NgoProtected><NgoLayoutWithFooter><NgoHelpRequests></NgoHelpRequests></NgoLayoutWithFooter></NgoProtected>}/>
         <Route path="/moderator-login" element={<ModeratorLogin />} />
         <Route path="/ngo-login" element={<NgoLogin />} />
+        <Route path="/csr-login" element={<CsrLogin/>} />
         <Route path="/ngo/profile" element={<NgoProtected><NgoLayoutWithFooter><NgoProfileComplete/></NgoLayoutWithFooter></NgoProtected>} />
         <Route path="/ngo/gallery"element={<PublicLayout><NgoProtected><NgoLayoutWithFooter><NgoGallery/></NgoLayoutWithFooter></NgoProtected></PublicLayout>}/>
         <Route path="/unauthorized" element={<Unauthorized />} />
@@ -152,6 +131,11 @@ export default function App() {
 <Route path="/ngo/verify-otp" element={<NgoVerifyOtp />} />
 <Route path="/ngo/set-password" element={<NgoSetPassword />} />
 <Route path="/ngo/basic-info" element={<NgoBasicInfo/>}/>
+<Route path="/csr/send-otp" element={<CsrSendOtp/>} />
+<Route path="/csr/verify-otp" element={ <CsrVerifyOtp/>} />
+<Route path="/csr/set-password" element={ <CsrSetPassword/>} />
+<Route path="/csr/basic-info" element={<CsrBasicInfo/>}/>
+
 {/* <Route path="/ngo/complete-profile" element={<NgoProfileWizard />} /> */}
 <Route path="/campaigns" element={<PublicLayout><IndividualProtected><PublicCampaigns /></IndividualProtected></PublicLayout>} />
 <Route path="/awards" element={<Awards />} />
