@@ -96,7 +96,6 @@
                 email: res.data.email,
                 phone:res.data.phone,
                 district:res.data.district,
-                accountHolderName:res.data.accountHolderName,
                 bankName:res.data.bankName
             });
             setIsEditMode(true);

@@ -1,0 +1,36 @@
+.csr-history-page {
+  padding: 40px;
+  background: #f4f6fb;
+  min-height: 100vh;
+}
+
+.csr-history-page h1 {
+  font-size: 1.8rem;
+  margin-bottom: 24px;
+}
+
+.csr-history-table {
+  width: 100%;
+  background: white;
+  border-radius: 14px;
+  border-collapse: collapse;
+  overflow: hidden;
+}
+
+.csr-history-table th,
+.csr-history-table td {
+  padding: 14px 16px;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.csr-history-table th {
+  background: #eef2ff;
+  font-weight: 600;
+}
+
+.csr-status.open { color: #0369a1; }
+.csr-status.assigned { color: #6d28d9; }
+.csr-status.in_progress { color: #9a3412; }
+.csr-status.completed { color: #166534; }
+.csr-status.cancelled { color: #991b1b; }

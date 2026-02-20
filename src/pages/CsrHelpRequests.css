@@ -1,0 +1,78 @@
+.csr-help-container {
+  padding: 30px;
+  background: #f4f6fb;
+  min-height: 100vh;
+}
+
+.csr-header h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.csr-header p {
+  color: #6b7280;
+  margin-bottom: 24px;
+}
+
+.csr-table {
+  width: 100%;
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+  border-collapse: collapse;
+}
+
+.csr-table th,
+.csr-table td {
+  padding: 14px 16px;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.csr-table th {
+  background: #eef2ff;
+  color: #3730a3;
+  font-weight: 600;
+}
+
+.csr-table tr:nth-child(even) {
+  background: #f9fafb;
+}
+
+.csr-status {
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.csr-status.assigned {
+  background: #ede9fe;
+  color: #6d28d9;
+}
+
+.csr-status.in_progress {
+  background: #fff7ed;
+  color: #9a3412;
+}
+
+.csr-status.completed {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.csr-status.rejected_by_helper {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.csr-update-btn {
+  margin-left: 8px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+  font-size: 0.8rem;
+}

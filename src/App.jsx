@@ -17,7 +17,7 @@ import ModeratorDashboard from "./pages/ModeratorDashboard";
 import PublicLayout from "./components/PublicLayout";
 import ModeratorLayout from "./pages/ModeratorLayout";
 import NgoDonations from "./pages/NgoDonations";
-import CampaignCreate from "./pages/CampaignCreate";
+// import CampaignCreate from "./pages/CampaignCreate";
 import CreateCampaign from "./pages/createCampaign";
 import CampaignCard from "./pages/CampaignCard";
 import MyCampaigns from "./pages/MyCampaign";
@@ -66,6 +66,13 @@ import CsrLogin from "./pages/CsrLogin";
 import CsrDashboard from "./pages/CsrDashboard";
 import CsrProtected from "./components/CsrProtected";
 import CSRLayoutWithFooter from "./pages/CsrLayoutWithFooter";
+import CsrHelpRequests from "./pages/CsrHelpRequests";
+import CsrDonate from "./pages/CsrDonate";
+import CsrDonationHistory from "./pages/CsrDonationHistory";
+import CsrProfile from "./pages/CsrProfile";
+import SubscriptionPlans from "./pages/SubscriptionPlans";
+import NgoSubscriptionPlans from "./pages/NgoSubscriptions";
+import CsrSubscriptionPlans from "./pages/CsrSubscriptionPlans";
 
 function Home() {
   return (<></>);
@@ -84,6 +91,7 @@ export default function App() {
         <Route path="/donate" element = {<PublicLayout><IndividualProtected><Donate/></IndividualProtected></PublicLayout>}/>
         <Route path="/volunteer" element = {<PublicLayout><IndividualProtected><Volunteer/></IndividualProtected></PublicLayout>}/>
         <Route path="/request-help" element = {<PublicLayout><IndividualProtected><NeedHelp/></IndividualProtected></PublicLayout>}/>
+        <Route path="/individual/subscriptions" element = {<PublicLayout><IndividualProtected><SubscriptionPlans/></IndividualProtected></PublicLayout>}/>
         <Route path="/help-history" element = {<PublicLayout><IndividualProtected><HelpRequestHistory/></IndividualProtected></PublicLayout>}/>
         <Route path="/donation-history" element ={<PublicLayout><IndividualProtected><DonationHistory/></IndividualProtected></PublicLayout>}/>
         <Route path="/volunteer-history" element ={<PublicLayout><IndividualProtected><VolunteerHistory/></IndividualProtected></PublicLayout>}/>
@@ -106,12 +114,22 @@ export default function App() {
         <Route path="/moderator-dashboard" element={<ModeratorProtected><ModeratorLayout/></ModeratorProtected>}/>
         <Route path="/ngo-donations" element ={<NgoProtected><NgoLayoutWithFooter><NgoDonations/></NgoLayoutWithFooter></NgoProtected>}/>
         <Route path="/ngo-volunteers" element ={<NgoProtected><NgoLayoutWithFooter><NgoVolunteers/></NgoLayoutWithFooter></NgoProtected>}/>
-        <Route path="/campaigns/create" element = {<PublicLayout><CampaignCreate/></PublicLayout>}/>
+        {/* <Route path="/campaigns/create" element = {<PublicLayout><CampaignCreate/></PublicLayout>}/> */}
+
+        <Route path="/ngo/subscriptions" element={<NgoProtected><NgoLayoutWithFooter><NgoSubscriptionPlans/></NgoLayoutWithFooter></NgoProtected>} />
         <Route path="/campaign/create" element={<NgoProtected><NgoLayoutWithFooter><CreateCampaign /></NgoLayoutWithFooter></NgoProtected>} />
         <Route path="/campaign/my-campaigns" element={<NgoProtected><NgoLayoutWithFooter><MyCampaigns/> </NgoLayoutWithFooter>s</NgoProtected>}/>
         <Route path="/campaign/:id" element={<NgoProtected><NGOLayoutWithFooter><CampaignDetails/></NGOLayoutWithFooter></NgoProtected>} />
         <Route path="/individual/campaign/:id" element={<PublicLayout><IndividualProtected><IndividualCampaignView/></IndividualProtected></PublicLayout>} />
         <Route path="/ngo-help-requests" element={<NgoProtected><NgoLayoutWithFooter><NgoHelpRequests></NgoHelpRequests></NgoLayoutWithFooter></NgoProtected>}/>
+        <Route path="/csr-help-requests" element={<CsrProtected><CSRLayoutWithFooter><CsrHelpRequests/></CSRLayoutWithFooter></CsrProtected>}/>
+        <Route path="/csr/donate" element={<CsrProtected><CSRLayoutWithFooter><CsrDonate/></CSRLayoutWithFooter></CsrProtected>}/>
+        <Route path="/csr/subscriptions" element={<CsrProtected><CSRLayoutWithFooter><CsrSubscriptionPlans/></CSRLayoutWithFooter></CsrProtected>}/>
+
+        <Route path="/csr-donations" element={<CsrProtected><CSRLayoutWithFooter><CsrDonationHistory/></CSRLayoutWithFooter></CsrProtected>}/>
+        <Route path="/csr/profile" element={<CsrProtected><CSRLayoutWithFooter><CsrProfile/></CSRLayoutWithFooter></CsrProtected>}/>
+
+
         <Route path="/moderator-login" element={<ModeratorLogin />} />
         <Route path="/ngo-login" element={<NgoLogin />} />
         <Route path="/csr-login" element={<CsrLogin/>} />

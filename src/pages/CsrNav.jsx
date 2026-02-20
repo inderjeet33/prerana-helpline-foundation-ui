@@ -24,15 +24,17 @@ export default function CsrNav() {
         <nav className="ngo-nav">
           <NavLink to="/csr-dashboard" className="ngo-link">Dashboard</NavLink>
           <NavLink to="/csr/profile" className="ngo-link">Profile</NavLink>
+          <NavLink to="/csr/donate" className="ngo-link">Donate</NavLink>
+
           <NavLink to="/csr-donations" className="ngo-link">Donations</NavLink>
-{/* 
-          <div className="ngo-dropdown">
+
+          {/* <div className="ngo-dropdown">
             <span className="ngo-dropdown-title">Requests ▾</span>
             <div className="ngo-dropdown-content">
               <NavLink to="/campaign/create" className="ngo-dropdown-item">Raise Requests</NavLink>
               <NavLink to="/campaign/my-campaigns" className="ngo-dropdown-item">My Requests</NavLink>
-            </div> */}
-          {/* </div> */}
+            </div>
+          </div> */}
         </nav>
       </div>
 

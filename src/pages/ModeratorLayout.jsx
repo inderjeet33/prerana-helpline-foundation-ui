@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
 import DonorOffers from "./DonorOffers";
+import ModeratorCsrApprovals from "./ModeratorCsrApprovals";
 import NgoList from "./NgoList";
 import AssignmentHistory from "./AssignmentHistory";
 import ModeratorDashboard from "./ModeratorDashboard";
@@ -72,6 +73,14 @@ export default function ModeratorLayout() {
           </button>
 
           <button
+  className={page === "csr" ? "active" : ""}
+  onClick={() => setPage("csr")}
+>
+  🏢 CSR Approvals
+</button>
+
+
+          <button
   className={page === "help-requests" ? "active" : ""}
   onClick={() => setPage("help-requests")}
 >
@@ -128,6 +137,7 @@ export default function ModeratorLayout() {
   <ModeratorDashboard onNavigate={setPage} />
 )}
         {page === "offers" && <DonorOffers />}
+        {page =="csr" && <ModeratorCsrApprovals/>}
         {page === "ngos" && <NgoList />}
         {page === "history" && <AssignmentHistory />}
         {page === "campaigns" && <ModeratorCampaigns />}

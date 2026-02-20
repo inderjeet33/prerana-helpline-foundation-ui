@@ -1,4 +1,4 @@
-.csr-dashboard-page {
+/* .csr-dashboard-page {
   background: #f5f7fb;
   min-height: 100vh;
 }
@@ -9,7 +9,6 @@
   padding: 24px 20px;
 }
 
-/* HEADER */
 .csr-header {
   display: flex;
   justify-content: space-between;
@@ -38,7 +37,6 @@
   color: #166534;
 }
 
-/* KPI GRID */
 .csr-kpi-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -63,7 +61,6 @@
   margin-top: 6px;
 }
 
-/* UTILIZATION */
 .csr-utilization-card {
   background: white;
   border-radius: 18px;
@@ -92,7 +89,6 @@
   background: linear-gradient(90deg, #2563eb, #1e40af);
 }
 
-/* IMPACT */
 .csr-impact-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -107,7 +103,6 @@
   box-shadow: 0 12px 30px rgba(0,0,0,0.08);
 }
 
-/* TABLE */
 .csr-table-card {
   background: white;
   border-radius: 18px;
@@ -135,4 +130,99 @@
 .status.in_progress {
   color: #9a3412;
   font-weight: 600;
+} */
+
+.csr-wrap {
+  padding: 36px;
+  background: #f4f6fb;
+  min-height: 100vh;
+  font-family: Inter, sans-serif;
+}
+
+/* HEADER */
+.csr-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.csr-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.csr-header p {
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+.csr-primary-btn {
+  background: #111827;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* KPI */
+.csr-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  margin-bottom: 36px;
+}
+
+.csr-kpi {
+  background: white;
+  padding: 22px;
+  border-radius: 14px;
+  border-left: 5px solid #111827;
+}
+
+.csr-kpi span {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.csr-kpi h2 {
+  margin-top: 6px;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+/* SECTIONS */
+.csr-sections {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.csr-section-card {
+  background: white;
+  padding: 26px;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+
+.csr-section-card h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.csr-section-card p {
+  margin: 12px 0 18px;
+  color: #4b5563;
+  font-size: 0.95rem;
+}
+
+.csr-section-card button {
+  background: transparent;
+  border: none;
+  color: #2563eb;
+  font-weight: 600;
+  cursor: pointer;
 }

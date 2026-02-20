@@ -252,4 +252,57 @@
     flex-direction: column;
   }
 }
-  
+.blocker-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.blocker-modal {
+  background: white;
+  padding: 28px 32px;
+  border-radius: 18px;
+  width: 90%;
+  max-width: 420px;
+  text-align: center;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+}
+
+.blocker-modal h2 {
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+}
+
+.blocker-modal p {
+  color: #4b5563;
+  margin-bottom: 22px;
+}
+
+.blocker-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.upgrade-btn {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.later-btn {
+  background: #f3f4f6;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}

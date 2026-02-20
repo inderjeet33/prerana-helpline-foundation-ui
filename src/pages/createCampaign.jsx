@@ -1,163 +1,15 @@
-// import React, { useState } from "react";
-// import "./campaign.css";
-// import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-// export default function CreateCampaign() {
-//   const token = localStorage.getItem("token");
-
-//   const [form, setForm] = useState({
-//     title: "",
-//     description: "",
-//     category: "",
-//     targetAmount: "",
-//     city: "",
-//     state: "",
-//     pinCode: "",
-//     address: "",
-//     endDate: "",
-//     urgency: "MEDIUM",
-//     image: null
-//   });
-
-//   function handleChange(e) {
-//     const { name, value, files } = e.target;
-//     setForm({
-//       ...form,
-//       [name]: files ? files[0] : value,
-//     });
-//   }
-
-//   async function handleSubmit(e) {
-//     e.preventDefault();
-//     try {
-//      const fd = new FormData();
-
-// fd.append(
-//   "data",
-//   new Blob([JSON.stringify({
-//     title: form.title,
-//     description: form.description,
-//     targetAmount: form.targetAmount,
-//     category: form.category,
-//     city: form.city,
-//     state: form.state,
-//     address: form.address,
-//     pinCode: form.pinCode,
-//     endDate: form.endDate,
-//     urgency: form.urgency
-//   })], { type: "application/json" })
-// );
-
-// if (form.image) {
-//   fd.append("image", form.image);
-// }
-
-// await axios.post("http://localhost:8080/campaigns", fd, {
-//   headers: {
-//     Authorization: "Bearer " + token
-//   }
-// });
-
-
-//       alert("Campaign created successfully!");
-
-//     } catch (error) {
-//       console.error(error);
-//       alert("Failed to create campaign");
-//     }
-//   }
-
-//   return (
-//     <div className="campaign-container">
-//       <h2>Create New Campaign</h2>
-
-//       <form className="campaign-form" onSubmit={handleSubmit}>
-
-//         <div className="form-group">
-//           <label>Campaign Title</label>
-//           <input name="title" value={form.title} onChange={handleChange} required />
-//         </div>
-
-//         <div className="form-group full-width">
-//           <label>Description</label>
-//           <textarea name="description" value={form.description} onChange={handleChange} required />
-//         </div>
-
-//         <div className="form-group">
-//           <label>Category</label>
-//           <select name="category" value={form.category} onChange={handleChange} required>
-//             <option value="">Select</option>
-//             <option value="EDUCATION">Education</option>
-//             <option value="MEDICAL">Medical</option>
-//             <option value="WOMEN">Women Support</option>
-//             <option value="ELDERLY">Elderly Support</option>
-//             <option value="FOOD">Food Distribution</option>
-//             <option value="OTHER">Other</option>
-//           </select>
-//         </div>
-
-//         <div className="form-group">
-//           <label>Target Amount</label>
-//           <input type="number" name="targetAmount" value={form.targetAmount} onChange={handleChange} required />
-//         </div>
-
-//         <div className="form-group">
-//           <label>End Date</label>
-//           <input type="date" name="endDate" value={form.endDate} onChange={handleChange} required />
-//         </div>
-
-//         <div className="form-group">
-//           <label>Urgency</label>
-//           <select name="urgency" value={form.urgency} onChange={handleChange}>
-//             <option value="LOW">Low</option>
-//             <option value="MEDIUM">Medium</option>
-//             <option value="HIGH">High</option>
-//           </select>
-//         </div>
-
-//         <hr className="divider" />
-
-//         <h3>Location Details</h3>
-
-//         <div className="form-group">
-//           <label>City</label>
-//           <input name="city" value={form.city} onChange={handleChange} />
-//         </div>
-
-//         <div className="form-group">
-//           <label>State</label>
-//           <input name="state" value={form.state} onChange={handleChange} />
-//         </div>
-
-//         <div className="form-group">
-//           <label>Pin Code</label>
-//           <input name="pinCode" value={form.pinCode} onChange={handleChange} />
-//         </div>
-
-//         <div className="form-group full-width">
-//           <label>Full Address</label>
-//           <textarea name="address" value={form.address} onChange={handleChange} />
-//         </div>
-
-//         <hr className="divider" />
-
-//         <div className="form-group full-width">
-//           <label>Featured Image</label>
-//           <input type="file" name="image" onChange={handleChange} accept="image/*" />
-//         </div>
-
-//         <button className="campaign-create-btn" type="submit">Create Campaign</button>
-//       </form>
-//     </div>
-//   );
-// }
-// src/pages/campaign/CreateCampaign.jsx
 import React, { useState } from "react";
+import SubscriptionBlockerModal from "./SubscriptionBlockerModal";
 import axios from "axios";
 import "./campaign.css";
 
 export default function CreateCampaign() {
+      const navigate = useNavigate();
+
   const token = localStorage.getItem("token");
+  const [blocker, setBlocker] = useState({ open: false, message: "" });
 
   const [form, setForm] = useState({
     title: "",
@@ -192,69 +44,163 @@ function dateToLocalEndOfDay(dateStr) {
   // dateStr from <input type="date"> is "YYYY-MM-DD"
   return `${dateStr}T23:59:59`;
 }
-  async function handleSubmit(e) {
-    e.preventDefault();
-    try {
-      setLoading(true);
 
-      const fd = new FormData();
+async function handleSubmit(e) {
+  e.preventDefault();
 
-      // build data object exactly matching CreateCampaignDto
-      const data = {
-        title: form.title || null,
-        description: form.description || null,
-        category: form.category || null,
-        targetAmount: form.targetAmount ? Number(form.targetAmount) : null,
-        // convert to LocalDateTime-like string (no timezone Z)
-        deadline: form.deadline ? dateToLocalEndOfDay(form.deadline) : null,
-        location: form.location || null,
-        mediaUrls: form.mediaUrls || null,
-        ownerType: form.ownerType || null,
-        urgency: form.urgency || null,
-        city: form.city || null,
-        state: form.state || null,
-        beneficiaryCount: form.beneficiaryCount || null,
-        beneficiaryType: form.beneficiaryType || null
-      };
+  try {
+    setLoading(true);
 
-      // Append JSON as application/json blob so Spring can parse @RequestPart("data") -> DTO
-      fd.append("data", new Blob([JSON.stringify(data)], { type: "application/json" }));
+    const fd = new FormData();
 
-      // optional image file as separate part
-      if (imageFile) {
-        fd.append("image", imageFile);
-      }
+    const data = {
+      title: form.title || null,
+      description: form.description || null,
+      category: form.category || null,
+      targetAmount: form.targetAmount ? Number(form.targetAmount) : null,
+      deadline: form.deadline ? dateToLocalEndOfDay(form.deadline) : null,
+      location: form.location || null,
+      mediaUrls: form.mediaUrls || null,
+      urgency: form.urgency || null,
+      city: form.city || null,
+      state: form.state || null,
+      beneficiaryCount: form.beneficiaryCount || null,
+      beneficiaryType: form.beneficiaryType || null
+    };
 
-      // do NOT set Content-Type manually — axios will set boundary
-      await axios.post("http://localhost:8080/campaigns", fd, {
+    fd.append(
+      "data",
+      new Blob([JSON.stringify(data)], { type: "application/json" })
+    );
+
+    if (imageFile) {
+      fd.append("image", imageFile);
+    }
+
+    await axios.post(
+      "http://localhost:8080/campaigns",
+      fd,
+      {
         headers: {
           Authorization: `Bearer ${token}`
         }
-      });
+      }
+    );
 
-      alert("Campaign created successfully!");
-      // reset form
-      setForm({
-        title: "",
-        description: "",
-        category: "",
-        targetAmount: "",
-        deadline: "",
-        location: "",
-        mediaUrls: "",
-        ownerType: "NGO",
-        urgency: "MEDIUM",
-        city: "",
-        state: ""
+    alert("Campaign created successfully!");
+
+    setForm({
+      title: "",
+      description: "",
+      category: "",
+      targetAmount: "",
+      deadline: "",
+      location: "",
+      mediaUrls: "",
+      urgency: "MEDIUM",
+      city: "",
+      state: "",
+      beneficiaryType: "",
+      beneficiaryCount: ""
+    });
+
+    setImageFile(null);
+
+  } catch (err) {
+    const status = err?.response?.status;
+    const message =
+      err?.response?.data ||
+      err?.response?.data?.message ||
+      "Something went wrong";
+
+    if (status === 403) {
+      setBlocker({
+        open: true,
+        message: message || "Upgrade your plan to create more campaigns"
       });
-      setImageFile(null);
-    } catch (err) {
-      console.error("Create campaign failed:", err?.response?.data || err);
-      alert("Failed to create campaign: " + (err?.response?.data?.message || err.message));
-    } finally {
-      setLoading(false);
+      return;
     }
+
+    alert("Failed to create campaign: " + message);
+    console.error("Create campaign failed:", err);
+
+  } finally {
+    setLoading(false);
   }
+}
+
+  // async function handleSubmit(e) {
+  //   e.preventDefault();
+  //   try {
+  //     setLoading(true);
+
+  //     const fd = new FormData();
+
+  //     // build data object exactly matching CreateCampaignDto
+  //     const data = {
+  //       title: form.title || null,
+  //       description: form.description || null,
+  //       category: form.category || null,
+  //       targetAmount: form.targetAmount ? Number(form.targetAmount) : null,
+  //       // convert to LocalDateTime-like string (no timezone Z)
+  //       deadline: form.deadline ? dateToLocalEndOfDay(form.deadline) : null,
+  //       location: form.location || null,
+  //       mediaUrls: form.mediaUrls || null,
+  //       ownerType: form.ownerType || null,
+  //       urgency: form.urgency || null,
+  //       city: form.city || null,
+  //       state: form.state || null,
+  //       beneficiaryCount: form.beneficiaryCount || null,
+  //       beneficiaryType: form.beneficiaryType || null
+  //     };
+
+  //     // Append JSON as application/json blob so Spring can parse @RequestPart("data") -> DTO
+  //     fd.append("data", new Blob([JSON.stringify(data)], { type: "application/json" }));
+
+  //     // optional image file as separate part
+  //     if (imageFile) {
+  //       fd.append("image", imageFile);
+  //     }
+
+  //     // do NOT set Content-Type manually — axios will set boundary
+  //     const res = await axios.post("http://localhost:8080/campaigns", fd, {
+  //       headers: {
+  //         Authorization: `Bearer ${token}`
+  //       }
+  //     });
+
+  //     if(res.ok){
+  //     alert("Campaign created successfully!");
+  //     // reset form
+  //     setForm({
+  //       title: "",
+  //       description: "",
+  //       category: "",
+  //       targetAmount: "",
+  //       deadline: "",
+  //       location: "",
+  //       mediaUrls: "",
+  //       ownerType: "NGO",
+  //       urgency: "MEDIUM",
+  //       city: "",
+  //       state: ""
+  //     });
+  //     setImageFile(null);
+  //   }else if(res.status == 403){
+  //     console.log("here");
+  //     setBlocker({
+  //     open: true,
+  //     message: text || "Upgrade your plan to create more campaigns"
+  //   });
+  //   return;
+  //   }
+  //   } catch (err) {
+  //     console.error("Create campaign failed:", err?.response?.data || err);
+  //     alert("Failed to create campaign: " + (err?.response?.data?.message || err.message));
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // }
 
   return (
     <div className="campaign-container">
@@ -368,6 +314,12 @@ function dateToLocalEndOfDay(dateStr) {
           {loading ? "Creating…" : "Create Campaign"}
         </button>
       </form>
+      <SubscriptionBlockerModal
+        open={blocker.open}
+        message={blocker.message}
+        onUpgrade={() => navigate("/ngo/subscriptions")}
+        onClose={() => setBlocker({ open: false })}
+      />
     </div>
   );
 }

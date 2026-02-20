@@ -1,0 +1,51 @@
+.subscription-container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.plan-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.plan-card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+.plan-card h2 {
+  margin-bottom: 6px;
+}
+
+.plan-card h3 {
+  color: #2563eb;
+}
+
+.plan-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0;
+}
+
+.plan-card li {
+  margin-bottom: 8px;
+  color: #374151;
+}
+
+.plan-card button {
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  background: #2563eb;
+  color: white;
+}
+
+.plan-card button:disabled {
+  background: #d1d5db;
+}

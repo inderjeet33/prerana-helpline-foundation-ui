@@ -99,7 +99,7 @@ export default function NgoNav() {
           <NavLink to="/ngo-dashboard" className="ngo-link">Dashboard</NavLink>
           <NavLink to="/ngo/profile" className="ngo-link">Profile</NavLink>
           <NavLink to="/ngo-donations" className="ngo-link">Donations</NavLink>
-
+          <NavLink to="/ngo/subscriptions" className="ngo-link">Subscriptions</NavLink>
           <div className="ngo-dropdown">
             <span className="ngo-dropdown-title">Requests ▾</span>
             <div className="ngo-dropdown-content">

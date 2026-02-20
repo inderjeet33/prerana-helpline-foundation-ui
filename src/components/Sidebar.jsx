@@ -82,6 +82,10 @@ export default function Sidebar() {
           📢 <span>Campaigns</span>
         </div>
 
+         <div className="sidebar-item" onClick={() => navigate("/individual/subscriptions")}>
+          📢 <span>Subscriptions</span>
+        </div>
+
       </div>
     </div>
   );

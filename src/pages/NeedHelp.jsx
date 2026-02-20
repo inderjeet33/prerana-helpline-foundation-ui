@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
+import SubscriptionBlockerModal from "./SubscriptionBlockerModal";
 import "./NeedHelp.css";
 
 export default function NeedHelp() {
@@ -19,6 +20,8 @@ export default function NeedHelp() {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState(null);
 
+  const [blocker, setBlocker] = useState({ open: false, message: "" });
+
   function handleChange(e) {
     const { name, value } = e.target;
     setForm(prev => ({ ...prev, [name]: value }));
@@ -30,42 +33,107 @@ export default function NeedHelp() {
     setMessage(null);
 
     try {
-      const token = localStorage.getItem("token");
+  const token = localStorage.getItem("token");
 
-      const res = await fetch("http://localhost:8080/help-requests/create", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          ...(token ? { Authorization: "Bearer " + token } : {})
-        },
-        body: JSON.stringify(form)
-      });
+  const res = await fetch("http://localhost:8080/help-requests/create", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      ...(token ? { Authorization: "Bearer " + token } : {})
+    },
+    body: JSON.stringify(form)
+  });
 
-      if (res.ok) {
-        setMessage({
-          type: "success",
-          text: "Your request has been submitted. We’ll work to connect you with support."
-        });
+  console.log("till here",res);
+  if (res.ok) {
+    setMessage({
+      type: "success",
+      text: "Your request has been submitted. We’ll work to connect you with support."
+    });
 
-        setForm({
-          helpType: "FINANCIAL",
-          donationCategory: "HEALTH",
-          amount: "",
-          itemDetails: "",
-          quantity: "",
-          urgency: "Immediate",
-          location: "",
-          preferredContact: "Phone",
-          reason: ""
-        });
-      } else {
-        setMessage({ type: "error", text: "Unable to submit request." });
-      }
-    } catch {
-      setMessage({ type: "error", text: "Network error." });
-    } finally {
-      setLoading(false);
-    }
+    setForm({
+      helpType: "FINANCIAL",
+      donationCategory: "HEALTH",
+      amount: "",
+      itemDetails: "",
+      quantity: "",
+      urgency: "Immediate",
+      location: "",
+      preferredContact: "Phone",
+      reason: ""
+    });
+    return;
+  }
+
+  // 🔥 HANDLE FORBIDDEN HERE
+  if (res.status === 403) {
+    console.log("here");
+    const text = await res.text(); // backend message
+    setBlocker({
+      open: true,
+      message: text || "Upgrade your plan to create more help requests"
+    });
+    return;
+  }
+
+  // other errors
+  setMessage({ type: "error", text: "Unable to submit request." });
+
+} catch (err) {
+  // 🚨 only network / CORS / DNS errors come here
+  console.error(err);
+  setMessage({ type: "error", text: "Network error." });
+} finally {
+  setLoading(false);
+}
+
+    // try {
+    //   const token = localStorage.getItem("token");
+
+    //   const res = await fetch("http://localhost:8080/help-requests/create", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       ...(token ? { Authorization: "Bearer " + token } : {})
+    //     },
+    //     body: JSON.stringify(form)
+    //   });
+
+    //   if (res.ok) {
+    //     setMessage({
+    //       type: "success",
+    //       text: "Your request has been submitted. We’ll work to connect you with support."
+    //     });
+
+    //     setForm({
+    //       helpType: "FINANCIAL",
+    //       donationCategory: "HEALTH",
+    //       amount: "",
+    //       itemDetails: "",
+    //       quantity: "",
+    //       urgency: "Immediate",
+    //       location: "",
+    //       preferredContact: "Phone",
+    //       reason: ""
+    //     });
+    //   } else {
+    //     setMessage({ type: "error", text: "Unable to submit request." });
+    //   }
+    // } catch(err) {
+    //     console.log("here");
+    //     console.log(err);   
+    //     if(err.status == 403){
+    //         setBlocker({
+    //             open:true,
+    //             message:"Upgrade your plan to create more help requests"
+    //         });
+    //     }
+    //     else{
+    //   setMessage({ type: "error", text: "Network error." });
+    //     }
+    // } finally {
+    //   setLoading(false);
+    // }
   }
 
   return (
@@ -249,6 +317,14 @@ export default function NeedHelp() {
           </section>
         </div>
       </div>
+      <SubscriptionBlockerModal
+  open={blocker.open}
+  message={blocker.message}
+  onUpgrade={() => navigate("/individual/subscriptions")}
+  onClose={() => setBlocker({ open: false })}
+/>
+
     </div>
+    
   );
 }
