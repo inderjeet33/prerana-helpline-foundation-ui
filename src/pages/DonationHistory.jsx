@@ -20,18 +20,19 @@ export default function DonationHistory() {
   const [selectedOffer, setSelectedOffer] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [view, setView] = useState("ACTIVE");
 
   const navigate = useNavigate();
 
   useEffect(() => {
     loadOffers();
-  }, []);
+  }, [view]);
 
   async function loadOffers() {
     try {
       const token = localStorage.getItem("token");
 
-      const res = await fetch("http://localhost:8080/donations/my-offers", {
+      const res = await fetch(`http://localhost:8080/donations/my-offers?view=${view}`, {
         headers: {
           "Content-Type": "application/json",
           ...(token ? { Authorization: "Bearer " + token } : {}),
@@ -44,8 +45,10 @@ export default function DonationHistory() {
       }
 
       const data = await res.json();
+      console.log("data",data);
       setOffers(data);
-    } catch {
+    } catch(errror){
+      console.error("caught error",error);
       setError("Something went wrong.");
     } finally {
       setLoading(false);
@@ -121,6 +124,31 @@ export default function DonationHistory() {
           {loading && <div className="hp-loader">Loading your offers…</div>}
           {error && <div className="hp-error">{error}</div>}
 
+          <div className="hp-tabs">
+  <button
+     className={`app-btn app-btn-secondary ${
+    view === "ACTIVE" ? "app-btn-active" : ""
+  }`}
+    onClick={() => {
+      setView("ACTIVE");
+      setLoading(true);
+    }}
+  >
+    Active
+  </button>
+
+  <button
+     className={`app-btn app-btn-secondary ${
+    view === "HISTORY" ? "app-btn-history" : ""
+  }`}
+    onClick={() => {
+      setView("HISTORY");
+      setLoading(true);
+    }}
+  >
+    History
+  </button>
+</div>
           <div className="hp-list">
             {offers.map((offer) => (
               <div
@@ -183,6 +211,7 @@ export default function DonationHistory() {
 
                 {(offer.status === "ASSIGNED" ||
                   offer.status === "IN_PROGRESS" ||
+                  offer.status == "DELIVERED" ||
                   offer.status === "COMPLETED") &&
                   offer.receiverId && (
 
@@ -205,6 +234,44 @@ export default function DonationHistory() {
                           View NGO
                         </button>
 
+{offer.status === "DELIVERED" && (
+  <button
+    className="app-btn app-btn-success"
+    onClick={async (e) => {
+      e.stopPropagation();
+      const confirmAction = window.confirm(
+        "Has the donation been successfully delivered by the NGO?"
+      );
+      if (!confirmAction) return;
+
+      try {
+        const token = localStorage.getItem("token");
+
+        const res = await fetch(
+          `http://localhost:8080/donations/${offer.id}/confirm`,
+          {
+            method: "PUT",
+            headers: {
+              Authorization: "Bearer " + token,
+            },
+          }
+        );
+
+        if (!res.ok) {
+          alert("Unable to confirm delivery.");
+          return;
+        }
+
+        alert("Donation marked as completed 🎉");
+        loadOffers();
+      } catch {
+        alert("Something went wrong.");
+      }
+    }}
+  >
+    Confirm Delivery
+  </button>
+)}
                         {offer.status === "COMPLETED" && (
                           <button
                             className="hp-certificate-btn"
@@ -220,10 +287,10 @@ export default function DonationHistory() {
                     </div>
                   )}
 
-                {(offer.status === "OPEN" || offer.status === "ASSIGNED") && (
+                {(offer.status === "OPEN" || offer.status === "ASSIGNED" || offer.status === "IN_PROGRESS") && (
                   <div className="hp-cancel-wrapper">
                     <button
-                      className="hp-cancel-btn"
+                      className="app-btn app-btn-danger"
                       onClick={(e) => {
                         e.stopPropagation();
                         cancelDonation(offer.id);

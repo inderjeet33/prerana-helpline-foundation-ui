@@ -6,23 +6,24 @@ export default function NgoHelpRequests() {
   const [requests, setRequests] = useState([]);
   const [statusChanges, setStatusChanges] = useState({});
   const [selected, setSelected] = useState(null);
+  const [view, setView] = useState("ACTIVE");
 
   const token = localStorage.getItem("token");
 
   const STATUS_TRANSITIONS = {
-    ASSIGNED: ["IN_PROGRESS", "CANCELLED_BY_DONOR"],
-    IN_PROGRESS: ["COMPLETED"],
-    COMPLETED: [],
-    CANCELLED_BY_DONOR: []
-  };
+  ASSIGNED: ["IN_PROGRESS", "HELP_REJECTED_BY_HELPER"],
+  IN_PROGRESS: ["COMPLETED","HELP_REJECTED_BY_HELPER"], // this means "DELIVERED" logically
+  COMPLETED: [],
+  REJECTED_BY_HELPER: []
+};
 
   useEffect(() => {
-    loadData();
-  }, []);
+  loadData();
+}, [view]);
 
   async function loadData() {
     const res = await axios.get(
-      "http://localhost:8080/ngo/profile/assigned-help-requests",
+      `http://localhost:8080/ngo/profile/assigned-help-requests?view=${view}`,
       { headers: { Authorization: "Bearer " + token } }
     );
     setRequests(res.data || []);
@@ -57,6 +58,23 @@ export default function NgoHelpRequests() {
         <p className="sub">People you’re currently helping</p>
       </div>
 
+<div className="ngo-tabs">
+  <button
+    className={view === "ACTIVE" ? "active" : ""}
+    onClick={() => setView("ACTIVE")}
+  >
+    Active
+  </button>
+
+  <button
+     className={`app-btn app-btn-secondary ${
+    view === "HISTORY" ? "app-btn-history" : ""
+  }`}
+    onClick={() => setView("HISTORY")}
+  >
+    History
+  </button>
+</div>
       <table className="ngo-table">
         <thead>
           <tr>
@@ -109,7 +127,7 @@ export default function NgoHelpRequests() {
                         [r.assignmentId]: e.target.value
                       }))
                     }
-                    disabled={allowed.length === 0}
+                    disabled={view === "HISTORY" && allowed.length === 0}
                   >
                     <option value={r.assignmentStatus}>
                       {r.assignmentStatus.replace(/_/g, " ")}

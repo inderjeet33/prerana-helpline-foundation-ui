@@ -29,6 +29,7 @@
 }
 
 .status-accepted { background: #28a745; }
+.status-delivered { background: #28a745; }
 .status-declined { background: #dc3545; }
 .status-completed { background: #17a2b8; }
 
@@ -42,8 +43,8 @@
   margin-top: 6px;
   padding: 6px 12px;
   border: none;
-  color: white;
-  background: #3f51b5;
+  color: blue;
+  background: white;
   border-radius: 6px;
   cursor: pointer;
 }

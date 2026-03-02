@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import SubscriptionBlockerModal from "./SubscriptionBlockerModal";
 import "./NeedHelp.css";
 
 export default function NeedHelp() {
+    const navigate = useNavigate();
   const [form, setForm] = useState({
     helpType: "FINANCIAL",
     donationCategory: "HEALTH",

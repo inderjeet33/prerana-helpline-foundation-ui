@@ -3,7 +3,13 @@ import DonorAuth from "./pages/DonorAuth";
 import DonorDetails from "./pages/DonorDetails";
 import Dashboard from "./pages/Dashboard";
 import SetPassword from "./pages/SetPassword";
-
+import DonorOffers from "./pages/DonorOffers";
+import ModeratorCsrApprovals from "./pages/ModeratorCsrApprovals";
+import ModeratorHelpRequests from "./pages/ModeratorHelpRequests";
+import VolunteerOffers from "./pages/VolunteerOffers";
+import NgoList from "./pages/NgoList";
+import ModeratorCampaigns from "./pages/ModeratorCampaigns";
+import AssignmentHistory from "./pages/AssignmentHistory";
 import logo from "./assets/infiniteseva logo.png"; // your logo
 import ProtectedRoute from "./components/ProtectedRoute";
 import { AuthProvider } from "./context/AuthContext";
@@ -73,6 +79,8 @@ import CsrProfile from "./pages/CsrProfile";
 import SubscriptionPlans from "./pages/SubscriptionPlans";
 import NgoSubscriptionPlans from "./pages/NgoSubscriptions";
 import CsrSubscriptionPlans from "./pages/CsrSubscriptionPlans";
+import IndividualLayout from "./pages/IndividualLayout";
+import "./pages/buttons.css";
 
 function Home() {
   return (<></>);
@@ -95,7 +103,9 @@ export default function App() {
         <Route path="/help-history" element = {<PublicLayout><IndividualProtected><HelpRequestHistory/></IndividualProtected></PublicLayout>}/>
         <Route path="/donation-history" element ={<PublicLayout><IndividualProtected><DonationHistory/></IndividualProtected></PublicLayout>}/>
         <Route path="/volunteer-history" element ={<PublicLayout><IndividualProtected><VolunteerHistory/></IndividualProtected></PublicLayout>}/>
-        <Route path="/donations/:id/ngo" element={<PublicLayout><IndividualProtected><NgoPublicProfile /></IndividualProtected></PublicLayout>} />
+        <Route path="/donations/:id/ngo" element={<IndividualLayout><IndividualProtected><NgoPublicProfile /></IndividualProtected></IndividualLayout>} />
+        <Route path="/csr/donations/:id/ngo" element={<CsrProtected><CSRLayoutWithFooter><NgoPublicProfile /></CSRLayoutWithFooter></CsrProtected>} />
+
         <Route path="/auth" element={<DonorAuth />} />
         <Route path="/donor-details" element={<PublicLayout><DonorDetails /></PublicLayout>} />
         <Route path="/ngo-signup" element={<NgoSignup/>}/>
@@ -107,11 +117,20 @@ export default function App() {
         <Route path="/csr-dashboard" element={<CsrProtected><CSRLayoutWithFooter><CsrDashboard/></CSRLayoutWithFooter></CsrProtected>}/>
 
         <Route
-  path="/moderator/gallery"
+  path="/gallery"
   element={<ModeratorProtected><ModeratorGallery /></ModeratorProtected>}
 />
 
+
+  <Route path="/moderator/offers" element={<ModeratorProtected><DonorOffers /></ModeratorProtected>} />
+  <Route path="/moderator/csr" element={<ModeratorProtected><ModeratorLayout><ModeratorCsrApprovals/></ModeratorLayout></ModeratorProtected>} />
+  <Route path="/moderator/help-requests" element={<ModeratorProtected><ModeratorLayout><ModeratorHelpRequests /></ModeratorLayout></ModeratorProtected>} />
+  <Route path="/moderator/volunteers" element={<ModeratorProtected><ModeratorLayout><VolunteerOffers /></ModeratorLayout></ModeratorProtected>} />
+  <Route path="/moderator/ngos" element={<ModeratorProtected><ModeratorLayout><NgoList /></ModeratorLayout></ModeratorProtected>} />
+  <Route path="/moderator/campaigns" element={<ModeratorProtected><ModeratorLayout><ModeratorCampaigns /></ModeratorLayout></ModeratorProtected>} />
+  <Route path="/moderator/history" element={<ModeratorProtected><ModeratorLayout><AssignmentHistory /></ModeratorLayout></ModeratorProtected>} />
         <Route path="/moderator-dashboard" element={<ModeratorProtected><ModeratorLayout/></ModeratorProtected>}/>
+        <Route path="/moderator/users/:userId" element={<ModeratorProtected><ModeratorLayout/></ModeratorProtected>}/>
         <Route path="/ngo-donations" element ={<NgoProtected><NgoLayoutWithFooter><NgoDonations/></NgoLayoutWithFooter></NgoProtected>}/>
         <Route path="/ngo-volunteers" element ={<NgoProtected><NgoLayoutWithFooter><NgoVolunteers/></NgoLayoutWithFooter></NgoProtected>}/>
         {/* <Route path="/campaigns/create" element = {<PublicLayout><CampaignCreate/></PublicLayout>}/> */}
@@ -153,7 +172,6 @@ export default function App() {
 <Route path="/csr/verify-otp" element={ <CsrVerifyOtp/>} />
 <Route path="/csr/set-password" element={ <CsrSetPassword/>} />
 <Route path="/csr/basic-info" element={<CsrBasicInfo/>}/>
-
 {/* <Route path="/ngo/complete-profile" element={<NgoProfileWizard />} /> */}
 <Route path="/campaigns" element={<PublicLayout><IndividualProtected><PublicCampaigns /></IndividualProtected></PublicLayout>} />
 <Route path="/awards" element={<Awards />} />

@@ -11,12 +11,13 @@ import ModeratorDashboard from "./ModeratorDashboard";
 import ModeratorCampaigns from "./ModeratorCampaigns";
 import VolunteerOffers from "./VolunteerOffers";
 import ModeratorHelpRequests from "./ModeratorHelpRequests";
-
+import ModeratorUserProfile from "./ModeratorUserProfile";
 
 import "./Moderator.css";
 
 export default function ModeratorLayout() {
   const { user, loading } = useContext(AuthContext);
+  const [selectedUserId, setSelectedUserId] = useState(null);
   const navigate = useNavigate();
   const [page, setPage] = useState("dashboard");
 
@@ -136,13 +137,24 @@ export default function ModeratorLayout() {
 {page === "dashboard" && (
   <ModeratorDashboard onNavigate={setPage} />
 )}
-        {page === "offers" && <DonorOffers />}
+        {/* {page === "offers" && <DonorOffers />} */}
+        {page === "offers" && (
+  <DonorOffers
+    onOpenUserProfile={(id) => {
+      setSelectedUserId(id);
+      setPage("user-profile");
+    }}
+  />
+)}
         {page =="csr" && <ModeratorCsrApprovals/>}
         {page === "ngos" && <NgoList />}
         {page === "history" && <AssignmentHistory />}
         {page === "campaigns" && <ModeratorCampaigns />}
         {page === "volunteers" && <VolunteerOffers />}
         {page === "help-requests" && <ModeratorHelpRequests />}
+        {page === "user-profile" && (
+  <ModeratorUserProfile userId={selectedUserId} />
+)}
 
 
 
@@ -150,3 +162,70 @@ export default function ModeratorLayout() {
     </div>
   );
 }
+// import { useContext, useEffect } from "react";
+// import { useNavigate, NavLink, Outlet } from "react-router-dom";
+// import { AuthContext } from "../context/AuthContext";
+// import "./ModeratorLayout.css";
+
+// export default function ModeratorLayout() {
+//   const { user, loading } = useContext(AuthContext);
+//   const navigate = useNavigate();
+
+//   useEffect(() => {
+//     if (loading) return;
+
+//     if (!user) {
+//       navigate("/moderator-login");
+//       return;
+//     }
+
+//     if (user.role !== "MODERATOR") {
+//       navigate("/");
+//       return;
+//     }
+//   }, [user, loading, navigate]);
+
+//   if (loading) return <div>Loading...</div>;
+
+//   return (
+//     <div className="mod-layout">
+
+//       <aside className="mod-sidebar">
+//         <div className="mod-profile">
+//           <div className="mod-profile-info">
+//             <h3 className="mod-name">{user?.name}</h3>
+//             <p className="mod-role">Moderator</p>
+//           </div>
+//         </div>
+
+//         <nav className="mod-menu">
+
+//           <NavLink to="/moderator-dashboard" end>📊 Dashboard</NavLink>
+//           <NavLink to="/moderator/offers">🎁 Donor Offers</NavLink>
+//           <NavLink to="/moderator/csr">🏢 CSR Approvals</NavLink>
+//           <NavLink to="/moderator/help-requests">🆘 Help Requests</NavLink>
+//           <NavLink to="/moderator/volunteers">🙋 Volunteer Offers</NavLink>
+//           <NavLink to="/moderator/ngos">🏢 NGO List</NavLink>
+//           <NavLink to="/moderator/campaigns">📋 Campaign Approvals</NavLink>
+//           <NavLink to="/moderator/history">📜 Assignment History</NavLink>
+
+//           <button
+//             className="logout-btn"
+//             onClick={() => {
+//               localStorage.removeItem("token");
+//               window.location.href = "/moderator-login";
+//             }}
+//           >
+//             ⤿ Logout
+//           </button>
+
+//         </nav>
+//       </aside>
+
+//       <main className="mod-content-area">
+//         <Outlet />
+//       </main>
+
+//     </div>
+//   );
+// }

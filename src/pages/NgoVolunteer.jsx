@@ -8,6 +8,8 @@ export default function NgoVolunteers() {
   const [selected, setSelected] = useState(null);
   const [statusChanges, setStatusChanges] = useState({});
 
+  const [view, setView] = useState("ACTIVE");
+
   const NGO_ALLOWED_TRANSITIONS = {
     ASSIGNED: ["IN_PROGRESS", "REJECTED_BY_RECEIVER"],
     IN_PROGRESS: ["COMPLETED", "REJECTED_BY_RECEIVER"],
@@ -22,7 +24,7 @@ export default function NgoVolunteers() {
     async function loadVolunteers() {
       try {
         const res = await axios.get(
-          "http://localhost:8080/ngo/profile/assigned-volunteers",
+          `http://localhost:8080/ngo/profile/assigned-volunteers?view=${view}`,
           { headers: { Authorization: "Bearer " + token } }
         );
 
@@ -38,7 +40,7 @@ export default function NgoVolunteers() {
     }
 
     loadVolunteers();
-  }, []);
+  }, [view]);
 
   /* ---------------- STATUS CHANGE ---------------- */
   const handleStatusChange = (assignmentId, newStatus) => {
@@ -80,6 +82,25 @@ export default function NgoVolunteers() {
         <h2>Assigned Volunteers</h2>
       </div>
 
+<div className="ngo-tabs">
+  <button
+     className={`app-btn app-btn-secondary ${
+    view === "ACTIVE" ? "app-btn-active" : ""
+  }`}
+    onClick={() => setView("ACTIVE")}
+  >
+    Active
+  </button>
+
+  <button
+     className={`app-btn app-btn-secondary ${
+    view === "HISTORY" ? "app-btn-history" : ""
+  }`}
+    onClick={() => setView("HISTORY")}
+  >
+    History
+  </button>
+</div>
       <table className="ngo-table">
         <thead>
           <tr>

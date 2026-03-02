@@ -281,20 +281,7 @@ export default function ModeratorHelpRequests() {
       </div>
 
       {/* 🔹 HELPER TYPE FILTER */}
-      <div className="helper-type-tabs">
-        {HELPER_TYPES.map(type => (
-          <button
-            key={type}
-            className={`tab-btn ${helperType === type ? "active" : ""}`}
-            onClick={() => {
-              setHelperType(type);
-              setAssignSelection({});
-            }}
-          >
-            {type}
-          </button>
-        ))}
-      </div>
+      
 
       {loading && <p>Loading…</p>}
 
@@ -337,33 +324,47 @@ export default function ModeratorHelpRequests() {
               </div>
             )}
 
-            {r.status === "APPROVED" && !r.helperId && (
-              <div className="help-actions">
-                <select
-                  value={assignSelection[r.id] || ""}
-                  onChange={(e) =>
-                    setAssignSelection(p => ({
-                      ...p,
-                      [r.id]: e.target.value
-                    }))
-                  }
-                >
-                  <option value="">Assign {helperType}</option>
-                  {helpers.map(h => (
-                    <option key={h.id} value={h.id}>
-                      {h.name}
-                    </option>
-                  ))}
-                </select>
+           {r.status === "APPROVED" && !r.helperId && (
+  <div className="help-actions">
 
-                <button
-                  className="assign-btn"
-                  onClick={() => assignHelper(r.id)}
-                >
-                  Assign
-                </button>
-              </div>
-            )}
+    {/* Helper type tabs */}
+    <div className="helper-type-tabs inline">
+      {HELPER_TYPES.map(type => (
+        <button
+          key={type}
+          className={`tab-btn ${helperType === type ? "active" : ""}`}
+          onClick={() => {
+            setHelperType(type);
+            setAssignSelection({});
+          }}
+        >
+          {type}
+        </button>
+      ))}
+    </div>
+
+    <select
+      value={assignSelection[r.id] || ""}
+      onChange={(e) =>
+        setAssignSelection(p => ({
+          ...p,
+          [r.id]: e.target.value
+        }))
+      }
+    >
+      <option value="">Assign {helperType}</option>
+      {helpers.map(h => (
+        <option key={h.id} value={h.id}>
+          {h.name}
+        </option>
+      ))}
+    </select>
+
+    <button className="assign-btn" onClick={() => assignHelper(r.id)}>
+      Assign
+    </button>
+  </div>
+)}
 
             {r.helperName && (
               <div className="assigned-box">

@@ -27,6 +27,7 @@ export default function CsrNav() {
           <NavLink to="/csr/donate" className="ngo-link">Donate</NavLink>
 
           <NavLink to="/csr-donations" className="ngo-link">Donations</NavLink>
+          <NavLink to="/csr-help-requests" className="ngo-link">Assigned Helps</NavLink>
 
           {/* <div className="ngo-dropdown">
             <span className="ngo-dropdown-title">Requests ▾</span>

@@ -126,9 +126,6 @@ useEffect(() => {
 
   return (
     <>
-      <Navbar />
-      <Sidebar />
-
       <div className="ngo-public-container">
         <div className="ngo-public-card">
           <h1>{ngo.name}</h1>

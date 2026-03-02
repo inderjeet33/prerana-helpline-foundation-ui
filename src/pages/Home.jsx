@@ -22,10 +22,10 @@ export default function Home() {
           <span className="home-badge">🌱 Trusted Social Impact Platform</span>
 
           <h1 className="title">
-            Prerana Helpline <br /> Foundation
+            Infinite Seva <br /> Foundation
           </h1>
 
-          <p className="subtitle">
+          <p className="subtitle"  >
             Connecting compassion with real needs —  
             empowering lives through verified NGOs and transparent support.
           </p>

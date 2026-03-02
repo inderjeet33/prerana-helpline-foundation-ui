@@ -172,7 +172,7 @@ export default function CsrDashboard() {
 
         <button
           className="csr-primary-btn"
-          onClick={() => navigate("/donate")}
+          onClick={() => navigate("/csr/donate")}
         >
           + New Contribution
         </button>

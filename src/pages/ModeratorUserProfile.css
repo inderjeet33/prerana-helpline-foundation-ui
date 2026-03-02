@@ -1,0 +1,98 @@
+.mod-user-page {
+  padding: 30px;
+  background: #f6f8fb;
+  min-height: 100vh;
+}
+
+.mod-user-topbar {
+  margin-bottom: 20px;
+}
+
+.mod-back-btn {
+  padding: 6px 12px;
+  border: none;
+  background: #1e293b;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.mod-user-header-card {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.mod-user-badges {
+  margin-top: 10px;
+}
+
+.badge {
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  margin-right: 6px;
+}
+
+.badge.type { background: #e0f2fe; }
+.badge.role { background: #ede9fe; }
+.badge.verified { background: #dcfce7; }
+.badge.completed { background: #fef9c3; }
+
+.mod-risk-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.stat-card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.stat-card.danger {
+  border: 2px solid #ef4444;
+  background: #fff1f2;
+}
+
+.mod-activity-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.activity-card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.activity-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.mod-user-actions {
+  display: flex;
+  gap: 15px;
+}
+
+.mod-user-actions button {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+}

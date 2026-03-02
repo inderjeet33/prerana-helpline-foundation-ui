@@ -75,6 +75,11 @@
   color: #0369a1;
 }
 
+.status-help_rejected_by_helper {
+  background: #e0f2fe;
+  color: #0369a1;
+}
+
 .status-in_progress {
   background: #fef3c7;
   color: #92400e;

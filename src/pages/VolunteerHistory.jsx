@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import "./DonationHistory.css";   // Reuse same CSS
+import { View } from "lucide-react";
 
 function getVolunteerIcon(type) {
   switch (type) {
@@ -20,16 +21,18 @@ export default function VolunteerHistory() {
   const [selected, setSelected] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [view, setView] = useState("ACTIVE");
 
   useEffect(() => {
+    setLoading(true);
     loadRequests();
-  }, []);
+  }, [view]);
 
   async function loadRequests() {
     try {
       const token = localStorage.getItem("token");
 
-      const res = await fetch("http://localhost:8080/volunteer/my-requests", {
+      const res = await fetch(`http://localhost:8080/volunteer/my-requests?view=${view}`, {
         headers: {
           "Content-Type": "application/json",
           ...(token ? { Authorization: "Bearer " + token } : {}),
@@ -49,6 +52,49 @@ export default function VolunteerHistory() {
       setLoading(false);
     }
   }
+
+  const confirmCompletion = async (id) => {
+  if (!window.confirm("Confirm volunteer work completed?")) return;
+
+  const token = localStorage.getItem("token");
+
+  await fetch(`http://localhost:8080/volunteer/${id}/confirm`, {
+    method: "PUT",
+    headers: { Authorization: "Bearer " + token }
+  });
+
+  loadRequests();
+};
+
+
+  const downloadCertificate = async (offerId) => {
+    try {
+      const token = localStorage.getItem("token");
+
+      const res = await fetch(
+        `http://localhost:8080/volunteer/${offerId}/certificate`,
+        { headers: { Authorization: "Bearer " + token } }
+      );
+
+      console.log("response is ",res);
+      if (!res.ok) throw new Error();
+
+      const blob = await res.blob();
+      const url = window.URL.createObjectURL(blob);
+
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `Prerana-Donation-Certificate-${offerId}.pdf`;
+      document.body.appendChild(a);
+      a.click();
+
+      a.remove();
+      window.URL.revokeObjectURL(url);
+    } catch {
+      alert("Unable to download certificate.");
+    }
+  };
+
 
   const cancelRequest = async (id) => {
     if (!window.confirm("Cancel this volunteer request?")) return;
@@ -93,6 +139,25 @@ export default function VolunteerHistory() {
           {loading && <div className="hp-loader">Loading your requests…</div>}
           {error && <div className="hp-error">{error}</div>}
 
+          <div className="hp-tabs">
+  <button
+   className={`app-btn app-btn-secondary ${
+    view === "ACTIVE" ? "app-btn-active" : ""
+  }`}
+    onClick={() => setView("ACTIVE")}
+  >
+    Active
+  </button>
+
+  <button
+    className={`app-btn app-btn-secondary ${
+    view === "HISTORY" ? "app-btn-history" : ""
+  }`}
+    onClick={() => setView("HISTORY")}
+  >
+    History
+  </button>
+</div>
           <div className="hp-list">
             {requests.map((r) => (
               <div
@@ -146,7 +211,7 @@ export default function VolunteerHistory() {
                   </div>
                 )}
 
-                {(r.status === "OPEN" || r.status === "ASSIGNED") && (
+                {view === "ACTIVE" && (r.status === "OPEN" || r.status === "ASSIGNED") && (
                   <div className="hp-cancel-wrapper">
                     <button
                       className="hp-cancel-btn"
@@ -160,6 +225,32 @@ export default function VolunteerHistory() {
                   </div>
                 )}
 
+                {view === "ACTIVE" && r.status === "DELIVERED" && (
+  <div className="hp-cancel-wrapper">
+    <button
+      className="hp-confirm-btn"
+      onClick={(e) => {
+        e.stopPropagation();
+        confirmCompletion(r.id);
+      }}
+    >
+      Confirm Completion
+    </button>
+  </div>
+)}
+  {view === "HISTORY" && r.status === "COMPLETED" && (
+  <div className="hp-cancel-wrapper">
+    <button
+      className="app-btn app-btn-success"
+      onClick={(e) => {
+        e.stopPropagation();
+        downloadCertificate(r.id);
+      }}
+    >
+      download Certificate
+    </button>
+  </div>
+)}
               </div>
             ))}
           </div>

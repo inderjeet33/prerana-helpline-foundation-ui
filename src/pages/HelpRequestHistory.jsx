@@ -19,22 +19,25 @@ export default function HelpRequestHistory() {
   const [selected, setSelected] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [view, setView] = useState("ACTIVE");
 
   useEffect(() => {
-    loadRequests();
-  }, []);
+  setLoading(true);
+  loadRequests();
+}, [view]);
 
   async function loadRequests() {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:8080/help-requests/my", {
+      const res = await fetch(`http://localhost:8080/help-requests/my?view=${view}`, {
         headers: { Authorization: "Bearer " + token }
       });
 
       if (!res.ok) throw new Error();
       const data = await res.json();
+      console.log("data ",data);
       setRequests(data || []);
-    } catch {
+    } catch(error) {
       setError("Unable to load your help requests.");
     } finally {
       setLoading(false);
@@ -45,11 +48,15 @@ export default function HelpRequestHistory() {
     if (!window.confirm("Cancel this help request?")) return;
 
     const token = localStorage.getItem("token");
-    await fetch(`http://localhost:8080/help-requests/${id}/cancel`, {
+    const res = await fetch(`http://localhost:8080/help-requests/${id}/cancel`, {
       method: "PUT",
       headers: { Authorization: "Bearer " + token }
     });
 
+    if (!res.ok) {
+  alert("Unable to cancel request.");
+  return;
+}
     loadRequests();
   };
 
@@ -70,6 +77,23 @@ export default function HelpRequestHistory() {
 
           {loading && <div className="help-loader">Loading…</div>}
           {error && <div className="help-error">{error}</div>}
+          <div className="help-tabs">
+  <button
+    className={view === "ACTIVE" ? "active" : ""}
+    onClick={() => setView("ACTIVE")}
+  >
+    Active
+  </button>
+
+  <button
+     className={`app-btn app-btn-secondary ${
+    view === "HISTORY" ? "app-btn-history" : ""
+  }`}
+    onClick={() => setView("HISTORY")}
+  >
+    History
+  </button>
+</div>
 
           <div className="help-grid">
             {requests.map(r => (
@@ -110,10 +134,10 @@ export default function HelpRequestHistory() {
                   </p>
                 )}
 
-                {r.status === "OPEN" && (
+                {view === "ACTIVE" && ["OPEN", "APPROVED", "ASSIGNED"].includes(r.status) && (
                   <div className="help-actions">
                     <button
-                      className="help-cancel-btn"
+                      className="app-btn app-btn-danger"
                       onClick={(e) => {
                         e.stopPropagation();
                         cancelRequest(r.id);
@@ -123,6 +147,30 @@ export default function HelpRequestHistory() {
                     </button>
                   </div>
                 )}
+
+                {view === "ACTIVE" && r.status === "DELIVERED" && (
+  <div className="help-actions">
+    <button
+      className="app-btn app-btn-success"
+      onClick={async (e) => {
+        e.stopPropagation();
+        const token = localStorage.getItem("token");
+
+        await fetch(
+          `http://localhost:8080/help-requests/${r.id}/confirm`,
+          {
+            method: "PUT",
+            headers: { Authorization: "Bearer " + token }
+          }
+        );
+
+        loadRequests();
+      }}
+    >
+      Confirm Help Received
+    </button>
+  </div>
+)}
               </div>
             ))}
           </div>

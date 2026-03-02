@@ -8,18 +8,19 @@ export default function Navbar() {
   const { user, loading, logout } = useContext(AuthContext);
   const [open, setOpen] = useState(false);
 
+   // Close dropdown on outside click
+  useEffect(() => {
+    const handleClickOutside = () => setOpen(false);
+    window.addEventListener("click", handleClickOutside);
+    return () => window.removeEventListener("click", handleClickOutside);
+  }, []);
   if (loading || !user) return null;
 
   const handleLogout = () => {
     logout();
   };
 
-  // Close dropdown on outside click
-  useEffect(() => {
-    const handleClickOutside = () => setOpen(false);
-    window.addEventListener("click", handleClickOutside);
-    return () => window.removeEventListener("click", handleClickOutside);
-  }, []);
+ 
 
   return (
     <nav className="navbar">
